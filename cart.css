@@ -1,0 +1,27 @@
+#container-cart{
+    text-align: center;
+    margin-top: 40px;
+}
+#table-cart{
+    background: linear-gradient(rgb(100, 94, 91), rgb(255, 253, 250));
+    border-radius: 14px;
+    
+}
+/* tbody{
+    display: flex;
+} */
+
+#cartImg{
+    width: 80px;
+}
+/* #cartImg{
+    display: flex;
+    justify-content: left;
+} */
+
+input{
+    width: 40px;
+}
+th, td{
+    padding: 6px 10px;
+}
