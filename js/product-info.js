@@ -52,6 +52,7 @@ async function callJSON() {
         const response = await fetch("https://japceibal.github.io/emercado-api/products/" + receivedProd + ".json")
         const data = await response.json()
         item = data;
+        
         return showInfo(item)
     } catch (error) {
         console.log(error)
@@ -60,12 +61,12 @@ async function callJSON() {
 }
 
 callJSON()
-
 //Informaciòn de los productos 
 
 function showInfo(item) {
     container.innerHTML = "";
-        container.innerHTML += `       
+        container.innerHTML += `
+        
         <div class ="card">
          <p class="title">Nombre</p>
          <p class="description"> ${item.name} </p>
@@ -93,6 +94,7 @@ function showInfo(item) {
     } 
 
 
+    
 //Llamamos a los comentarios
 async function callJSONcomm() {
     try {
@@ -118,6 +120,7 @@ function showInfocomm(com) {
         containercomm.innerHTML += `
         
         <div class ="comms">
+       
         <p class ="name">${com[i].user}</p><!– Nombre –>
         <p class = "date">${com[i].dateTime}</p><!– Date –>
        
@@ -161,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('floatingTextarea').value = '';
     });
 });
+
 
 //Traer los productos relacionados
 async function callJSONrel() {
@@ -216,39 +220,5 @@ showInforel(rel);
 
 
 
-// Modo noche
 
-document.addEventListener("DOMContentLoaded", function() {
-    const nightModeSwitch = document.getElementById("night-mode-switch");
-    const nightModeStylesheet = document.getElementById("night-mode-stylesheet");
-  
-    // Función para activar o desactivar el modo nocturno
-    function toggleNightMode() {
-      nightModeStylesheet.disabled = !nightModeSwitch.checked;
-  
-      // Cambiar el texto del interruptor según el modo actual
-      if (nightModeSwitch.checked) {
-        nightModeSwitch.nextElementSibling.textContent = "Modo Diurno";
-      } else {
-        nightModeSwitch.nextElementSibling.textContent = "Modo Nocturno";
-      }
-  
-      // Guardar el estado del modo en localStorage
-      localStorage.setItem("nightMode", nightModeSwitch.checked);
-    }
-  
-    // Agregar el evento de cambio para el interruptor
-    nightModeSwitch.addEventListener("change", toggleNightMode);
-  
-    // Verificar el estado almacenado en localStorage al cargar la página
-    const storedNightMode = localStorage.getItem("nightMode");
-    if (storedNightMode === "true") {
-      nightModeSwitch.checked = true;
-    } else {
-      nightModeSwitch.checked = false;
-    }
-  
-    // Inicializar el modo según el estado almacenado
-    toggleNightMode();
-  });
 

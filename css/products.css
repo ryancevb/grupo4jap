@@ -31,10 +31,8 @@
     border-radius: 15px;
     background-color:  rgb(31, 31, 31);
     color: rgb(202, 198, 198)
-}
 
-.container-prod:hover{
-    cursor: pointer;
+
 }
 
 #container__div-sold{
@@ -42,3 +40,4 @@
     font-size: 0.68em;
     padding-left: 74px;
 }
+

@@ -10,7 +10,6 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css\stylespages.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/cart.css">
 </head>
 
 <body>
@@ -33,7 +32,7 @@
           </li>
           <li class="nav-item dropdown">
             <button href="#" class="buttonemail" id="email" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false"></button>
+            aria-expanded="false"></button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
             <li><a class="dropdown-item" href="cart.html">Carrito</a></li> 
@@ -48,47 +47,37 @@
   </nav>
   <main>
     <div class="container">
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-        </div>   -->
-      <div id="container-cart">
-        <h2>Carrito de compras</h2>
-        <h4>Artículos a comprar</h4>
-        <table id="table-cart">
-          <tr>
-            <th></th>
-            <th>Nombre</th>
-            <th>Costo</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-          </tr>
-          <tr>
-            <td id="cartImg"></td>
-            <td id="cartName"></td>
-            <td id="cartCost"></td>
-            <td id="cartAmount"><input type="text"> </td>
-            <td id="cartSubt"></td>
-          </tr>
-        </table>
+      
 
-
-        <!-- <table id="table-cart">
-          <thead>
-            <tr>
-              <td  id="cartImg"></td>  Espacio vacío para debajo poner la img auto -->
-              <!-- <th>Nombre</th>
-              <th>Costo</th>
-              <th>Cantidad</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="cartImg">
-
-          </tbody>
-        </table>  -->
-
-      </div>
+       <!-- Sección del carrito -->
+       <h2>Mi Carrito</h2>
+       <ul id="carrito"></ul>
+       <p>Total: <span id="total">0</span> USD</p>
+       <button id="finalizarCompra" class="btn btn-primary">Finalizar Compra</button>
+       
     </div>
+    
+    <!-- Controles para Envio-->
+    <div id="controlesEnvio">
+      <h2>Tipo de Envío</h2>
+      <label for="tipoEnvio">Selecciona el tipo de envío:</label>
+      <select id="tipoEnvio">
+        <option value="estandar">Estándar</option>
+        <option value="express">Express</option>
+        <option value="sameDay">Entrega el mismo día</option>
+      </select>
+    
+      <h2>Dirección de Entrega</h2>
+      <label for="calle">Calle:</label>
+      <input type="text" id="calle"><br>
+    
+      <label for="numero">Número:</label>
+      <input type="text" id="numero"><br>
+    
+      <label for="esquina">Esquina:</label>
+      <input type="text" id="esquina"><br>
+    </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">
