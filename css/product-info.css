@@ -1,0 +1,170 @@
+body {
+    background-color: orangered;
+    background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6), rgba(215, 78, 54, 0.9));
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+
+/*la informacion de los productos*/
+
+#textCom2{
+    text-align: center;
+    font-family: 'Verdana', serif;
+}
+#infoProd {
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px 4px black;
+    border-radius: 20px;
+    float: left;
+    margin: auto;
+    margin: auto;
+    width: 50%;
+    
+}
+
+#contImg{
+    float: left;
+    margin: auto;
+    margin: auto;
+    width: 50%;
+}
+
+
+
+.title {
+    font-family: 'Verdana', serif;
+    font-weight: bolder;
+    padding: 5px;
+    margin-bottom: 0px;
+
+}
+
+.description {
+    padding: 5px;
+    font-family: 'Verdana', serif;
+    margin-bottom: 0px;
+}
+
+.showImg {
+    float: left;
+    margin: 10px;
+    margin: 10px;
+    width: 100%;
+    height: 350px;
+    padding: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px 4px black;
+    font-family: 'Verdana', serif;
+    background-color: white;
+    border-radius: 15px;
+}
+
+/*Comentarios*/
+
+#containercommProd {
+   
+    margin: 10px;
+    margin: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px 4px black;
+    width: 93%;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.comms{
+    font-family: 'Verdana', serif;
+    padding: 0px 0px 0px 5px;
+
+}
+#textCom{
+    text-align: center;
+    margin-top: 30%;
+    font-family: 'Verdana', serif;
+}
+
+.name {
+    font-weight: bolder;
+    float: left;
+    margin: auto;
+    margin: auto;
+    width: 50%;
+
+
+}
+
+.date, #containerRelatedProd {
+    float: left;
+    margin: auto;
+    margin: auto;
+    width: 50%;
+}
+
+/*Agregar Comentarios*/
+#formsInfo, #containerRelatedProd {
+    float: left;
+    margin: 10px;
+    margin: 10px;
+    width: 45%;
+    height: 260px;
+    padding: 5px;
+    border: 1px solid black;
+    box-shadow: 2px 2px 8px 4px black;
+    font-family: 'Verdana', serif;
+    background-color: white;
+    border-radius: 15px;
+}
+
+h3 {
+    font-weight: bolder;
+}
+
+.btnInfo {
+    margin-top: 15px;
+    text-align: center;
+
+
+}
+
+button {
+    box-shadow: 2px 2px 8px 4px black;
+}
+
+.container {
+    float: left;
+    margin: 10px;
+    margin: 10px;
+    width: 100%;
+}
+
+#options {
+    font-size: 15px;
+}
+
+.form-control {
+    width: 20vw;
+}
+
+.btn {
+    background-color: orangered;
+    border-color: orangered;
+}
+#floatingTextarea{
+    width: 100%;
+}
+/*Imagenes Relacionadas*/
+.img{
+    float: left;
+    margin: 10px;
+    margin: 10px;
+    width: 50%;
+}
+
+/*footer*/
+.float-end{
+    color:black;
+  }
+
+  

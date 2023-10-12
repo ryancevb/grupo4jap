@@ -1,0 +1,43 @@
+.container{
+    text-align: center;
+}
+
+.container h2{
+    margin-top: 30px;
+}
+
+.container h4{
+    margin-bottom: 40px;
+}
+
+.container h5{
+    display: inline-flex;
+}
+
+#div__img-prod{
+    margin-right: 90px;
+    display: flex;
+}
+
+#mostrar-productos{
+    margin: 2px 10px;
+}
+
+.container-prod{
+    margin: 5px 200px 30px;
+    display: inline-flex;
+    padding: 20px 50px;
+    box-shadow: 2px 2px 8px 4px black;
+    border-radius: 15px;
+    background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+
+
+}
+
+#container__div-sold{
+    display: inline;
+    font-size: 0.68em;
+    padding-left: 74px;
+}
+

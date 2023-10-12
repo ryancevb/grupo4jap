@@ -1,0 +1,166 @@
+body {
+    font-family: 'verdana';
+    color: black;
+}
+#box{
+    background-color: orangered;
+    background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6),   rgba(215, 78, 54, 0.9));
+    height: 520px;
+    display: flex;
+    width: 27%;
+    justify-content: center;
+    border-radius: 50px;
+    align-items: center;
+    margin: 0 auto !important;
+    box-shadow: 1px 1px 7px black;
+}
+.socialNet img{
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+.socialNet{
+border-radius: 10px;
+padding: 2px;
+margin: 3px;
+width: 33%;
+font-weight: strong;
+}
+#buttonNet{
+   display: flex;
+   font-size: 12px;
+}
+
+
+#robot{
+    width: 100%;
+}
+#button{
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 10vw;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+}
+#button:hover{
+    background-color: #dadada;
+    color: black;
+    border-color: black;
+    size-adjust: 1.15;
+    transition-duration: 0.4s;
+}
+#logoimg {
+    border-radius: 100px;
+    margin: 0 auto !important;
+    display: flex;
+    justify-content: center;
+    height: 200px;
+    padding: 5px;
+}
+/*Formulario*/
+.formsesion h1 {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.form {
+    margin: 0 40vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.form input {
+    border: 2px solid;
+    box-shadow: 1px 3px 5px;
+}
+
+
+.form button {
+    box-shadow: 1px 3px 5px;
+}
+
+
+.form-control {
+    width: 22vw;
+    display: flex;
+    height: 45px;
+    border-radius: 10px;
+}
+
+
+.form-floating {
+    margin-right: 50px;
+}
+
+
+#required, #required1, #required2{
+    display: none;
+    font-size: small;
+}
+#alert_text{
+    display: none;
+    background-color: rgb(255, 215, 215) ;
+    color: black;
+    padding: 20px;
+    width: 450px;
+    border-radius: 15px;
+    border-color: black;
+    border: 2px;
+    font-size:large;
+}
+
+
+#alert{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+/*Footer*/
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+p #right{
+    text-align: right;
+}
+.link{
+    color: black;
+    background-color: white;
+    padding: 2px;
+    border-color: white;
+    transition-duration: 0.4s;
+    box-shadow: none;
+}
+a:hover{
+color: black;
+    transition-duration: 0.4s;
+    text-decoration: none;
+   
+}
+a{
+    color: black;
+    text-decoration: underline;
+}
+
+
+
+
+h1{
+    font-size: xx-large;
+    padding: 15px;
+}
+#jap{
+    text-align: left;
+
+
+}
+#arriba{
+    text-align: right;
+}

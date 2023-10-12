@@ -1,0 +1,80 @@
+body {
+  background-color: orangered;
+  background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6), rgba(215, 78, 54, 0.9));
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.float-end {
+  color: black;
+}
+
+/*Titulo de la paginas */
+.text-center{
+  width: 40%;
+  height: 40%;
+  margin: 2vw 30vw;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px 2px rgb(252, 250, 250);
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+}
+
+.form-control,
+.btn-group {
+  box-shadow: 2px 2px 8px 2px black;
+}
+/*Botones para filtrar en products y categories */
+#rangeFilterCount, #clearRangeFilter, #rangeFilterCountMin, #rangeFilterCountMax{
+  box-shadow: 2px 2px 12px 2px black;
+  font-weight: bolder;
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198);
+}
+#rangeFilterCountMin::placeholder, #rangeFilterCountMax::placeholder, .cant{
+  font-weight: bolder;
+}
+
+#sortAsctext, #sortDesctext, #sortByCounttext{
+  box-shadow: 2px 2px 12px 2px black;
+  font-weight: bolder;
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+}
+
+.categoriaCartas {
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px 2px black;
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+  
+}
+/*Titulo de products*/
+.products {
+  
+  width: 50%;
+  height: 100px;
+  margin: 0vw 20vw;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px 2px rgb(252, 250, 250);
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+}
+/*Buscador de products*/
+#input-search {
+  font-size: 20px;
+  box-shadow: 2px 2px 8px 2px rgb(252, 250, 250);
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+}
+#input-search::placeholder{
+  font-weight: bolder;
+}
+.btn {
+  background-color: white;
+  border-color: white;
+  color: black;
+  background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198)
+}
