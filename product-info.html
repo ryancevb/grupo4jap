@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>eMercado - Todo lo que busques está aquí</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/product-info.css" rel="stylesheet">
+  <link href="css/night-mode.css" rel="stylesheet" id="night-mode-stylesheet" disabled>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav w-100 justify-content-between">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categorías</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="sell.html">Vender</a>
+          </li>
+          <li class="nav-item dropdown">
+            <button href="#" class="buttonemail" id="email" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false"></button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+            <li><a class="dropdown-item" href="cart.html">Carrito</a></li> 
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="night-mode-switch">
+              <label class="form-check-label" for="night-mode-switch">Modo Noche</label>
+            </div>
+            <li><hr class="dropdown-divider"></li>
+            <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
+          </ul>
+          </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <!--Muestran la información del producto--> 
+    <div id="textCom2"> <h1>Información del producto:</h1></div>
+    <div id="infoProd">
+     
+    </div>
+    <!--Muestra de imagenes -->
+    <div id="contImg" class="carousel slide" data-bs-ride="carousel">
+     
+      <div class="carousel-inner" id="container2">
+        <div class="carousel-item active" id="imgActive">
+        </div>
+      </div>
+    </div>
+      <!--Comentarios-->
+      <div id="textCom">
+      <h2 >Comentarios</h2></div>
+      <div id="containercommProd">
+      </div>
+      
+        <!--COMENTARIOS-->
+        <div id="comments">
+          <form id="formsInfo">
+            <h3> Comentar</h3>
+            <label for="text">Tu opinión:</label>
+            <br>
+            <textarea class="form-control" placeholder="Escribe aquí tu comentario..." id="floatingTextarea"></textarea>
+            <br>
+            <label for="text">Tu puntuación:</label>
+            <select name="opciones" id="opciones">
+              <option value="opcion1">1</option>
+              <option value="opcion2">2</option>
+              <option value="opcion3">3</option>
+              <option value="opcion4">4</option>
+              <option value="opcion4">5</option>
+            </select>
+            <div class="btnInfo">
+              <button type="submit" class="btn btn-primary ">Enviar</button>
+            </div>
+
+          </form>
+        </div>
+        <!--Productos Relacionados-->
+      <div id="containerRelatedProd">
+
+      </div>
+
+        </div>
+      </div>
+
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-end">
+        <a href="#" class="float-end">Volver arriba</a>
+      </p>
+      <p class="links">Este sitio forma parte de <a class="links" href="https://jovenesaprogramar.edu.uy/"
+          target="_blank">Jovenes a Programar</a></p>
+    </div>
+  </footer>
+  <div id="spinner-wrapper">
+    <div class="lds-ring">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/init.js"></script>
+  <script src="js/product-info.js"></script>
+</body>
+
+</html>
