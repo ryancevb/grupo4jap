@@ -31,8 +31,6 @@ body {
     width: 50%;
 }
 
-
-
 .title {
     font-family: 'Verdana', serif;
     font-weight: bolder;
@@ -61,6 +59,7 @@ body {
     border-radius: 15px;
 }
 
+
 /*Comentarios*/
 
 #containercommProd {
@@ -79,6 +78,7 @@ body {
     padding: 0px 0px 0px 5px;
 
 }
+
 #textCom{
     text-align: center;
     margin-top: 30%;
@@ -94,6 +94,7 @@ body {
 
 
 }
+
 
 .date, #containerRelatedProd {
     float: left;
@@ -154,6 +155,7 @@ button {
 #floatingTextarea{
     width: 100%;
 }
+
 /*Imagenes Relacionadas*/
 .img{
     float: left;
@@ -162,9 +164,12 @@ button {
     width: 50%;
 }
 
+#containerRelatedProd .rel:hover{
+    cursor: pointer;
+}
+
 /*footer*/
 .float-end{
     color:black;
-  }
 
-  
+}

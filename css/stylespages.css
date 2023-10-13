@@ -18,13 +18,14 @@ body {
   border-radius: 15px;
   box-shadow: 2px 2px 8px 2px rgb(252, 250, 250);
   background-color:  rgb(31, 31, 31);
-    color: rgb(202, 198, 198)
+  color: rgb(202, 198, 198)
 }
 
 .form-control,
 .btn-group {
   box-shadow: 2px 2px 8px 2px black;
 }
+
 /*Botones para filtrar en products y categories */
 #rangeFilterCount, #clearRangeFilter, #rangeFilterCountMin, #rangeFilterCountMax{
   box-shadow: 2px 2px 12px 2px black;
@@ -32,6 +33,7 @@ body {
   background-color:  rgb(31, 31, 31);
     color: rgb(202, 198, 198);
 }
+
 #rangeFilterCountMin::placeholder, #rangeFilterCountMax::placeholder, .cant{
   font-weight: bolder;
 }
@@ -50,31 +52,33 @@ body {
     color: rgb(202, 198, 198)
   
 }
+
 /*Titulo de products*/
 .products {
-  
   width: 50%;
   height: 100px;
   margin: 0vw 20vw;
   border-radius: 15px;
   box-shadow: 2px 2px 8px 2px rgb(252, 250, 250);
   background-color:  rgb(31, 31, 31);
-    color: rgb(202, 198, 198)
+  color: rgb(202, 198, 198)
 }
+
 /*Buscador de products*/
 #input-search {
   font-size: 20px;
   box-shadow: 2px 2px 8px 2px rgb(252, 250, 250);
   background-color:  rgb(31, 31, 31);
-    color: rgb(202, 198, 198)
+  color: rgb(202, 198, 198)
 }
 #input-search::placeholder{
   font-weight: bolder;
 }
+
 .btn {
   background-color: white;
   border-color: white;
   color: black;
   background-color:  rgb(31, 31, 31);
-    color: rgb(202, 198, 198)
+  color: rgb(202, 198, 198)
 }
