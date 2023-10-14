@@ -13,6 +13,7 @@ function callJSONImg() {
         .then(data => {
             img = data.images;
             callImg(img) //Muestro las imagenes
+            getID()
         })
         .catch(error => console.log(error))
 }
@@ -252,3 +253,13 @@ document.addEventListener("DOMContentLoaded", function() {
     toggleNightMode();
   });
 
+// Obtener el ID para comprar y agregar en el carrito 
+
+function getID(){
+     document.getElementById("btnCart").addEventListener("click", function () {
+        
+      localStorage.setItem("catBuyID", receivedProd);
+      window.location = "cart.html";
+    });
+}
+   

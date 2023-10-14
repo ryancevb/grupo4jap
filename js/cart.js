@@ -5,6 +5,7 @@ const cartName = document.getElementById("cartName");
 const cartCost = document.getElementById("cartCost");
 const cartAmount = document.getElementById("cartAmount");
 const cartSubt = document.getElementById("cartSubt");
+const cartBuyID = localStorage.getItem("catBuyID")
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
 
@@ -44,3 +45,45 @@ function subtotal(cost, amount) {
 }
 
 getCartInfo();
+
+//Se agrega al carrito la compra hecha en el product-info
+
+//Se obtiene el JSON 
+async function callJSON() {
+    try {
+        const response = await fetch("https://japceibal.github.io/emercado-api/products/" + cartBuyID + ".json")
+        const data = await response.json()
+        item = data;
+        return showInfo(item)
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+//Funcion para agregar los datos al carrito 
+callJSON()
+
+function showInfo(item) {
+    console.log(item)
+    let dataImg = document.createElement("img");
+    dataImg.setAttribute("id", "cartImg");
+    dataImg.src = `${item.images[0]}`;
+
+    let count = document.createElement("input");
+    count.addEventListener("input", () => {
+        subtotal(item.cost, parseInt(count.value));
+    });
+    cartAmount.appendChild(count);
+    let currency = document.createTextNode(item.currency + " ");
+    let cost = document.createTextNode(item.cost);
+    cartCost.appendChild(currency);
+    cartCost.appendChild(cost);
+    cartImg.appendChild(dataImg);
+    let prodName = document.createTextNode(item.name)
+    cartName.appendChild(prodName);
+    subtotal(item.cost, parseInt(count.value))
+        
+}
+
+   ;
+   
