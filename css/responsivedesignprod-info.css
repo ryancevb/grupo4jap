@@ -1,10 +1,10 @@
+/*Products-Info*/
 @media only screen and (min-width: 400px) {
 #textCom{
     margin-top: 5vh;
 }
 #btnCart {
     margin-top: 2vh;
-    float:right;
 
 }
 
@@ -20,7 +20,6 @@
    }
    #btnCart {
     margin-top: 5vh;
-    float:right;
    }
     }
 }
