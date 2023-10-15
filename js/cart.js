@@ -35,7 +35,6 @@ function getCartInfo() {
                 cartName.appendChild(prodName);
                 
 
-               
             });
         })
 }
@@ -90,6 +89,7 @@ function showInfo(item) {
     var column3 = document.createElement("TD");
     var column4 = document.createElement("TD");
     var column5 = document.createElement("TD");
+
     column1.setAttribute("class", "cartImg");
     column2.setAttribute("class", "cartName");
     column3.setAttribute("class", "cartCost");
@@ -97,7 +97,6 @@ function showInfo(item) {
     column5.setAttribute("id", "subtNewProd");
    
 
-    
     //Subtotal
     function subtotal(cost, amount) {
         const subtNewProd = document.getElementById("subtNewProd");
@@ -125,7 +124,6 @@ function showInfo(item) {
     let prodName = document.createTextNode(item.name)
 
      //Se crea los elementos de adentro de los <td>
-   
     column2.appendChild(prodName);
     column3.appendChild(currency);
     column3.appendChild(cost);
@@ -138,5 +136,6 @@ function showInfo(item) {
     cell.appendChild(column3);
     cell.appendChild(column4);
     cell.appendChild(column5);
+
 };
 
