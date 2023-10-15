@@ -5,7 +5,7 @@ const cartName = document.getElementById("cartName");
 const cartCost = document.getElementById("cartCost");
 const cartAmount = document.getElementById("cartAmount");
 const cartSubt = document.getElementById("cartSubt");
-const cartBuyID = localStorage.getItem("catBuyID")
+const cartBuyID = localStorage.getItem("catBuyID");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
 
@@ -32,17 +32,17 @@ function getCartInfo() {
                 cartImg.appendChild(dataImg);
                 let prodName = document.createTextNode(elem.name)
                 cartName.appendChild(prodName);
-                subtotal(elem.unitCost, parseInt(count.value));
+                // subtotal(elem.unitCost, parseInt(count.value));
             });
         })
 }
 
 //Se calcula el subtotal de la compra del articulo
 function subtotal(cost, amount) {
-    let subt = cost * amount;
+    let  subt = (cost * amount);
     console.log(cost, amount, subt);
-    let price = document.createTextNode(subt) ;
-    cartSubt.appendChild(price);
+    // let price = document.createTextNode(subt) ;
+    cartSubt.innerHTML=(subt); // Cambié appendChild por el innerHTML
 }
 
 getCartInfo();
@@ -62,7 +62,13 @@ async function callJSON() {
 
 }
 //Funcion para agregar los datos al carrito 
-callJSON()
+function nameX(cartBuyID) {
+   if (cartBuyID !== undefined) {
+    callJSON()
+} 
+}
+nameX(cartBuyID)
+
 
 function showInfo(item) {
     
@@ -75,7 +81,7 @@ function showInfo(item) {
         row.setAttribute("id","trTD");
         showCart.appendChild(row);
         let cell = document.getElementById("trTD");
-      //  for (var j = 0; j < 5; j++) { //Número de Columnas
+        //  for (var j = 0; j < 5; j++) { //Número de Columnas
 
 
             // Crea un elemento <td> y un nodo de texto, haz que el nodo de
@@ -90,7 +96,17 @@ function showInfo(item) {
             column2.setAttribute("class", "cartName");
             column3.setAttribute("class", "cartCost");
             column4.setAttribute("class", "cartAmount");
-            column5.setAttribute("class", "cartSubt");
+            column5.setAttribute("id", "subtNewProd");
+
+            function subtotal(cost, amount) {
+                const subtNewProd = document.getElementById("subtNewProd");
+              // amount = typeof amount !== NaN ? amount : 1
+              let subt = cost;
+               subt = (cost * amount);
+              console.log(cost, amount, subt);
+            //   let price = document.createTextNode(subt) ;
+              subtNewProd.innerHTML = subt;
+          }
 
 
             let dataImg = document.createElement("img");
@@ -120,7 +136,7 @@ function showInfo(item) {
             cell.appendChild(column3);
             cell.appendChild(column4);
             cell.appendChild(column5);
-            subtotal(item.cost, parseInt(count.value));
+            // subtotal(item.cost, parseInt(count.value));
         }
 
          //Termina el tr
@@ -150,4 +166,4 @@ function showInfo(item) {
 ;
 
 let h = document.createElement("TR");
-showCart.innerHTML = h;
+showCart.appendChild(h);
