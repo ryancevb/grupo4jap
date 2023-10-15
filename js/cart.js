@@ -34,6 +34,7 @@ function getCartInfo() {
                 let prodName = document.createTextNode(elem.name)
                 cartName.appendChild(prodName);
                 
+
             });
         })
 }
@@ -96,7 +97,6 @@ function showInfo(item) {
     column5.setAttribute("id", "subtNewProd");
    
 
-
     //Subtotal
     function subtotal(cost, amount) {
         const subtNewProd = document.getElementById("subtNewProd");
@@ -136,6 +136,6 @@ function showInfo(item) {
     cell.appendChild(column3);
     cell.appendChild(column4);
     cell.appendChild(column5);
-    ç
+
 };
 

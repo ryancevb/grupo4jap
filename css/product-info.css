@@ -162,7 +162,9 @@ button {
     margin: 10px;
     margin: 10px;
     width: 50%;
+    margin-top: 0;
 }
+
 
 #containerRelatedProd .rel:hover{
     cursor: pointer;
@@ -172,4 +174,14 @@ button {
 .float-end{
     color:black;
 
+}
+#textCom{
+    margin-top: 0;
+}
+
+#btnCart{
+    background-color: white;
+    color:black;
+    font-size: 20px;
+    border-radius: 6px;
 }

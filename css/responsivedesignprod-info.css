@@ -1,0 +1,40 @@
+/*Products-Info*/
+@media only screen and (min-width: 300px) {
+#textCom{
+    margin-top: 5vh;
+}
+#btnCart {
+    margin-top: 2vh;
+}
+#textCom{
+        margin-top: 10vh;
+    }
+    #formsInfo{
+        width: 45%;
+    }
+   #containerRelatedProd{
+    width: 40%;
+   }
+   #btnCart {
+    margin-top: 5vh;
+   }
+    }
+
+@media only screen and (min-width: 960px) {
+    #textCom{
+        margin-top: 55vh;
+    }
+    #btnCart{
+        float: right;
+    margin-top: 1vh;
+    }
+    #containercommProd{
+        width: 75%;
+    }
+    #containerRelatedProd{
+        width: 40%;
+    }
+    h1{
+        margin-bottom: 20px;
+    }
+}
