@@ -88,8 +88,7 @@ function showInfo(item) {
     var column3 = document.createElement("TD");
     var column4 = document.createElement("TD");
     var column5 = document.createElement("TD");
-   
-     //var column6 = document.createElement("TD");
+
     column1.setAttribute("class", "cartImg");
     column2.setAttribute("class", "cartName");
     column3.setAttribute("class", "cartCost");
