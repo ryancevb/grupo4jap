@@ -1,0 +1,26 @@
+@media only screen and (min-width: 400px) {
+#textCom{
+    margin-top: 5vh;
+}
+#btnCart {
+    margin-top: 2vh;
+    float:right;
+
+}
+
+@media only screen and (max-width: 300px) {
+    #textCom{
+        margin-top: 10vh;
+    }
+    #formsInfo{
+        width: 45%;
+    }
+   #containerRelatedProd{
+    width: 40%;
+   }
+   #btnCart {
+    margin-top: 5vh;
+    float:right;
+   }
+    }
+}
