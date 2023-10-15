@@ -77,7 +77,7 @@ function nameX(cartBuyID) {
         callJSON()
     }
 }
-nameX(cartBuyID)
+nameX(cartBuyID);
 
 
 function showInfo(item) {
