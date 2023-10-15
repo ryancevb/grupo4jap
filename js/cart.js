@@ -35,15 +35,7 @@ function getCartInfo() {
                 cartName.appendChild(prodName);
                 
 
-                //Eliminación del producto (En proceso)
-                var delProd = document.createElement("i");
-                delProd.classList.add(`fa`);
-                delProd.classList.add(`fa-trash`);
-
-                delProd.addEventListener("click", function () {
-                    showCart.deleteRow(1);
-                });
-                delObj.appendChild(delProd);
+               
             });
         })
 }
@@ -105,17 +97,9 @@ function showInfo(item) {
     column3.setAttribute("class", "cartCost");
     column4.setAttribute("class", "cartAmount");
     column5.setAttribute("id", "subtNewProd");
-    column6.setAttribute("class", "delProd");
+   
 
-
-    //Eliminar el producto- Proceso
-    var delProd = document.createElement("i");
-    delProd.classList.add(`fa`);
-    delProd.classList.add(`fa-trash`);
-
-    delProd.addEventListener("click", function () {
-        showCart.deleteRow(2);
-    })
+    
     //Subtotal
     function subtotal(cost, amount) {
         const subtNewProd = document.getElementById("subtNewProd");
@@ -143,7 +127,7 @@ function showInfo(item) {
     let prodName = document.createTextNode(item.name)
 
      //Se crea los elementos de adentro de los <td>
-    column6.appendChild(delProd);
+   
     column2.appendChild(prodName);
     column3.appendChild(currency);
     column3.appendChild(cost);
@@ -156,6 +140,5 @@ function showInfo(item) {
     cell.appendChild(column3);
     cell.appendChild(column4);
     cell.appendChild(column5);
-    cell.appendChild(column6);
 };
 
