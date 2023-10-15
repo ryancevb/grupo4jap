@@ -5,7 +5,6 @@ const cartName = document.getElementById("cartName");
 const cartCost = document.getElementById("cartCost");
 const cartAmount = document.getElementById("cartAmount");
 const cartSubt = document.getElementById("cartSubt");
-const delObj = document.getElementById("delObj");
 const cartBuyID = localStorage.getItem("catBuyID");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
@@ -22,6 +21,7 @@ function getCartInfo() {
                 dataImg.setAttribute("class", "cartImg");
                 dataImg.src = `${elem.image}`;
                 let count = document.createElement("input");
+                count.setAttribute("type", "number");
                 count.addEventListener("input", () => {
                     subtotal(elem.unitCost, parseInt(count.value));
                 });
@@ -33,7 +33,7 @@ function getCartInfo() {
                 cartImg.appendChild(dataImg);
                 let prodName = document.createTextNode(elem.name)
                 cartName.appendChild(prodName);
-
+                
 
                 //Eliminación del producto (En proceso)
                 var delProd = document.createElement("i");
@@ -52,12 +52,12 @@ function getCartInfo() {
 function subtotal(cost, amount) {
     let subt = (cost * amount);
     console.log(cost, amount, subt);
-    cartSubt.innerHTML = (subt);
+    cartSubt.innerHTML = (subt); 
 }
 
 getCartInfo();
 
-// -- DESAFIATE: Se agrega al carrito la compra hecha en el product-info
+//Se agrega al carrito la compra hecha en el product-info
 
 //Se obtiene el JSON 
 async function callJSON() {
@@ -71,9 +71,9 @@ async function callJSON() {
     }
 
 }
-//Funcion para agregar los datos al carrito 
+//Funcion para agregar los datos al carrito, si no se encuentra ningún valor en localStorage no se ejecuta 
 function nameX(cartBuyID) {
-    if (cartBuyID !== undefined) {
+    if (cartBuyID !== null) {
         callJSON()
     }
 }
@@ -81,26 +81,32 @@ nameX(cartBuyID)
 
 
 function showInfo(item) {
-    //Se crea el <tr>
+
+
+
+    ///Se crea el <tr>
     var row = document.createElement("TR");
     row.setAttribute("id", "trTD");
     showCart.appendChild(row);
     let cell = document.getElementById("trTD");
+   
 
 
-    // Crea un elemento <td> 
+    /// Crea un elemento <td> 
     var column1 = document.createElement("TD");
     var column2 = document.createElement("TD");
     var column3 = document.createElement("TD");
     var column4 = document.createElement("TD");
     var column5 = document.createElement("TD");
     var column6 = document.createElement("TD");
+     //var column6 = document.createElement("TD");
     column1.setAttribute("class", "cartImg");
     column2.setAttribute("class", "cartName");
     column3.setAttribute("class", "cartCost");
     column4.setAttribute("class", "cartAmount");
-    column5.setAttribute("class", "subtNewProd");
+    column5.setAttribute("id", "subtNewProd");
     column6.setAttribute("class", "delProd");
+
 
     //Eliminar el producto- Proceso
     var delProd = document.createElement("i");
@@ -112,7 +118,7 @@ function showInfo(item) {
     })
     //Subtotal
     function subtotal(cost, amount) {
-        const subtNewProd = document.getElementsByClassName("subtNewProd");
+        const subtNewProd = document.getElementById("subtNewProd");
         let subt = cost;
         subt = (cost * amount);
         console.log(cost, amount, subt);
@@ -124,8 +130,9 @@ function showInfo(item) {
     dataImg.setAttribute("class", "cartImg");
     dataImg.src = `${item.images[0]}`;
 
-    //Contador
+     //Contador
     let count = document.createElement("input");
+    count.setAttribute("type", "number");
     count.addEventListener("input", () => {
         subtotal(item.cost, parseInt(count.value));
     });
@@ -135,7 +142,7 @@ function showInfo(item) {
     let cost = document.createTextNode(item.cost);
     let prodName = document.createTextNode(item.name)
 
-    //Se crea los elementos de adentro de los <td>
+     //Se crea los elementos de adentro de los <td>
     column6.appendChild(delProd);
     column2.appendChild(prodName);
     column3.appendChild(currency);
@@ -143,13 +150,13 @@ function showInfo(item) {
     column4.appendChild(count);
     column1.appendChild(dataImg);
 
-    // se ponen adentro de lor <tr> los <td>
+   // se ponen adentro de lor <tr> los <td>
     cell.appendChild(column1);
     cell.appendChild(column2);
     cell.appendChild(column3);
     cell.appendChild(column4);
     cell.appendChild(column5);
     cell.appendChild(column6);
+};
 
-}
 
