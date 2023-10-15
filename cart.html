@@ -34,23 +34,23 @@
           <li class="nav-item dropdown">
             <button href="#" class="buttonemail" id="email" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-            <li><a class="dropdown-item" href="cart.html">Carrito</a></li> 
-            <li><a id="darkmode"class="dropdown-item">Modo Oscuro</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
-          </ul>
-        </li>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="cart.html">Carrito</a></li>
+              <li><a id="darkmode" class="dropdown-item">Modo Oscuro</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-        </div>   -->
+
       <div id="container-cart">
         <h2>Carrito de compras</h2>
         <h4>Artículos a comprar</h4>
@@ -61,33 +61,63 @@
             <th>Costo</th>
             <th>Cantidad</th>
             <th>Subtotal</th>
+            <th>Eliminar</th>
           </tr>
           <tr>
             <td id="cartImg"></td>
             <td id="cartName"></td>
             <td id="cartCost"></td>
-            <td id="cartAmount"><input type="text"> </td>
+            <td id="cartAmount"> </td>
             <td id="cartSubt"></td>
+            <td id="delObj"></td>
           </tr>
         </table>
 
 
-        <!-- <table id="table-cart">
-          <thead>
-            <tr>
-              <td  id="cartImg"></td>  Espacio vacío para debajo poner la img auto -->
-              <!-- <th>Nombre</th>
-              <th>Costo</th>
-              <th>Cantidad</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="cartImg">
 
-          </tbody>
-        </table>  -->
+        <!-- Controles para Envio-->
+        <div id="controlesEnvio">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <h2>Tipo de Envío</h2>
+                <select id="tipoEnvio" class="form-control">
+                  <option value="">Selecciona el tipo de envío:</option>
+                  <option value="estandar">Estándar</option>
+                  <option value="express">Express</option>
+                  <option value="sameDay">Entrega el mismo día</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <h2>Dirección de Entrega</h2>
+                <label for="calle">Calle:</label>
+                <input type="text" id="calle" class="form-control"><br>
+              </div>
+            </div>
+            <div class="form-group col-md-6 ">
+
+              <label for="numero">Número:</label>
+              <input type="text" id="numero" class="form-control"><br>
+            </div>
+            <div class="form-group col-md-6 ">
+              <label for="esquina">Esquina:</label>
+              <input type="text" id="esquina" class="form-control"><br>
+            </div>
+            <div class="form-group col-md-6 ">
+              <label for="submit"></label>
+              <button type="submit" class="btn btn-primary " id="submit">Enviar</button><br>
+            </div>
+        
+
+        </form>
+</div>
+
+
 
       </div>
+
+
+    </div>
     </div>
   </main>
   <footer class="text-muted">
@@ -95,7 +125,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p class="links">Este sitio forma parte de <a class="links" href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p class="links">Este sitio forma parte de <a class="links" href="https://jovenesaprogramar.edu.uy/"
+          target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
   <div id="spinner-wrapper">
