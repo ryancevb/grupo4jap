@@ -26,4 +26,7 @@
 #infoProd {
     height: 100px;
 }
+.carousel-item {
+    width: 90%;
+}
 }
