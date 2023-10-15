@@ -159,4 +159,3 @@ function showInfo(item) {
     cell.appendChild(column6);
 };
 
-
