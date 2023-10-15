@@ -1,0 +1,29 @@
+/*Products-info*/
+/*@media only screen and (min-width: 400px) {
+    .products{
+        height: 150px;
+        width: 65%;
+        margin: 5px;
+        text-align: center;
+        justify-content: center;
+    }
+.container-prod{
+    float: right;
+      position: absolute;
+      right: 0;
+}
+
+}*/
+
+@media only screen and (max-width: 450px){
+#container1{
+    display: block;
+}
+.showImg {
+    float: left;
+    height: 200px;
+}
+#infoProd {
+    height: 100px;
+}
+}
