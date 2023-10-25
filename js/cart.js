@@ -6,8 +6,14 @@ const cartCost = document.getElementById("cartCost");
 const cartAmount = document.getElementById("cartAmount");
 const cartSubt = document.getElementById("cartSubt");
 const cartBuyID = localStorage.getItem("catBuyID");
+const cartBuySTotal = document.getElementById("tdSubtotal");
+const cartEnvioTotal = document.getElementById("tdCostoEnvio");
+const cartTotal = document.getElementById("tdTotal");
+const popup = document.getElementById("popupMetodo");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
+
+var totalComprado = 0;
 
 //Se obtiene la información del producto para el carrito 
 function getCartInfo() {
@@ -33,17 +39,91 @@ function getCartInfo() {
                 cartImg.appendChild(dataImg);
                 let prodName = document.createTextNode(elem.name)
                 cartName.appendChild(prodName);
-                
+                mostrarTotales(data.articles);
 
             });
         })
 }
 
+
+document.getElementById("tipoEnvio").addEventListener("change", () => { mostrarTotales()})
+function mostrarTotales(){
+let stotal;
+let subt = document.getElementById("cartSubt").innerHTML;
+let nsubt = document.getElementById("subtNewProd").innerHTML;
+    tipoEnvio = document.getElementById("tipoEnvio").value;
+   
+    if(tipoEnvio != ""){
+if(isNaN(parseInt(subt)) ||isNaN(parseInt(nsubt))){
+
+    stotal = 0;
+}
+else{   
+     stotal = parseInt(subt) + parseInt(nsubt);
+}
+    let costEnvio = 0;
+    letcostTotal = 0;
+    
+    if(tipoEnvio == "estandar"){
+
+        costEnvio = stotal*0.05
+    }else if(tipoEnvio == "express"){
+
+        costEnvio = stotal*0.07
+    }else if(tipoEnvio == "sameDay"){
+        costEnvio = stotal*0.15
+    }
+
+    costTotal = stotal + costEnvio;
+
+    cartBuySTotal.innerHTML = "USD "+ stotal;
+    cartEnvioTotal.innerHTML = "USD "+ costEnvio; 
+    cartTotal.innerHTML = "USD " + costTotal 
+}
+
+}
+
+document.getElementById("btnSeleccionar").addEventListener("click", () =>{
+    popup.showModal();
+
+})
+document.getElementById("cerrarPopup").addEventListener("click", () =>{
+    popup.close();
+
+})
+
+document.getElementById("chTarjetaCredito").addEventListener("change", () => {
+    if(document.getElementById("chTarjetaCredito").checked){
+        document.getElementById("chBancaria").checked = false
+
+        document.getElementById("txtNumTarjeta").disabled = false;
+        document.getElementById("txtCodSeguridadTarjeta").disabled = false;
+        document.getElementById("txtVencimientoTarjeta").disabled = false;
+
+        document.getElementById("txtNumBancaria").disabled = true;
+
+    }
+})
+document.getElementById("chBancaria").addEventListener("change", () => {
+    if(document.getElementById("chBancaria").checked){
+        document.getElementById("chTarjetaCredito").checked = false
+
+        document.getElementById("txtNumBancaria").disabled = false;
+        document.getElementById("txtNumTarjeta").disabled = true;
+        document.getElementById("txtCodSeguridadTarjeta").disabled = true;
+        document.getElementById("txtVencimientoTarjeta").disabled = true;
+
+    }
+})
 //Se calcula el subtotal de la compra del articulo
 function subtotal(cost, amount) {
+    
     let subt = (cost * amount);
     console.log(cost, amount, subt);
     cartSubt.innerHTML = (subt); 
+
+    totalComprado += subt;
+    mostrarTotales();
 }
 
 getCartInfo();
