@@ -81,9 +81,9 @@
                 <h2>Tipo de Envío</h2>
                 <select id="tipoEnvio" class="form-control">
                   <option value="">Selecciona el tipo de envío:</option>
-                  <option value="estandar">Estándar</option>
-                  <option value="express">Express</option>
-                  <option value="sameDay">Entrega el mismo día</option>
+                  <option value="estandar">Estándar 12 a 15 dias (5%)</option>
+                  <option value="express">Express 5 a 8 dias (7%)</option>
+                  <option value="sameDay">Premium 2 a 5 dias (15%)</option>
                 </select>
               </div>
               <div class="form-group col-md-6">
@@ -101,10 +101,47 @@
               <label for="esquina">Esquina:</label>
               <input type="text" id="esquina" class="form-control"><br>
             </div>
+
+            <div  class="form-group col-md-6 ">
+              <h2>Costos</h2>
+              <table id="tablaDePrecios" class="default">
+                  <tr><td>Subtotal</td><td id="tdSubtotal">USD 0</td></tr>
+                  <tr><td>Costo de envio</td><td id="tdCostoEnvio">USD 0</td></tr>
+                  <tr><td>Total($)</td><td id="tdTotal"><b>USD 0</b></td></tr>
+              </table>
+            </div>
+
             <div class="form-group col-md-6 ">
+              <h2>Forma de pago</h2>
+              <p>No ha seleccionado metodo de pago*******</p> <input type="button" value="seleccionar" id="btnSeleccionar" >
+            </div>
+            <dialog id="popupMetodo" class="container">
+
+                <h2>Forma de pago</h2>
+                <hr>
+                <form action="">
+                <input type="radio"  name="" id="chTarjetaCredito">Tarjeta de credito <hr>
+                <label for=""  >Número de tarjeta</label>
+                <input type="text" size="24" id="txtNumTarjeta">
+                <label for="">Código de seg.</label>
+                <input type="text" id="txtCodSeguridadTarjeta"><br><br>
+                <label for="">Vencimiento (MM/AA)</label>
+                <input type="text" id="txtVencimientoTarjeta"><br><br>
+              </form>
+              
+              <form action="">
+                <input type="radio" name="" id="chBancaria">Cuenta bancaria 
+              <hr>
+                <label for="">Número de cuenta</label>
+                <input type="text" id="txtNumBancaria"></form>
+<hr>
+                <input type="button" value="cerrar" id="cerrarPopup">
+        </div>
+            </dialog>
+            <!--<div class="form-group col-md-6 ">
               <label for="submit"></label>
               <button type="submit" class="btn btn-primary " id="submit">Enviar</button><br>
-            </div>
+            </div>-->
         
 
         </form>
