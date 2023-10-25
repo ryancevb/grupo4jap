@@ -42,3 +42,8 @@
     font-size: 0.68em;
     padding-left: 74px;
 }
+
+#input-search{
+    border-radius: 8px;
+    border: 1px solid white;
+}

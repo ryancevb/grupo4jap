@@ -12,7 +12,7 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/product-info.css" rel="stylesheet">
   <link href="css/night-mode.css" rel="stylesheet" id="night-mode-stylesheet" disabled>
-  <link href="css/responsivedesignprod.css" rel="stylesheet">
+  <link href="css/responsivedesignprod-info.css" rel="stylesheet">
 </head>
 
 <body>
@@ -46,7 +46,6 @@
             <li><hr class="dropdown-divider"></li>
             <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
           </ul>
-          </ul>
         </li>
         </ul>
       </div>
@@ -66,7 +65,9 @@
         <div class="carousel-item active" id="imgActive">
         </div>
       </div>
+     
     </div>
+ <div><button id="btnCart" onclick=" showInfo(item)">Comprar</button></div>
       <!--Comentarios-->
       <div id="textCom">
       <h2 >Comentarios</h2></div>
@@ -82,12 +83,12 @@
             <textarea class="form-control" placeholder="Escribe aquí tu comentario..." id="floatingTextarea"></textarea>
             <br>
             <label for="text">Tu puntuación:</label>
-            <select name="opciones" id="opciones">
-              <option value="opcion1">1</option>
-              <option value="opcion2">2</option>
-              <option value="opcion3">3</option>
-              <option value="opcion4">4</option>
-              <option value="opcion4">5</option>
+            <select name="opciones" id="options">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
             <div class="btnInfo">
               <button type="submit" class="btn btn-primary ">Enviar</button>

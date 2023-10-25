@@ -34,23 +34,23 @@
           <li class="nav-item dropdown">
             <button href="#" class="buttonemail" id="email" role="button" data-bs-toggle="dropdown"
               aria-expanded="false"></button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-            <li><a class="dropdown-item" href="cart.html">Carrito</a></li> 
-            <li><a id="darkmode"class="dropdown-item">Modo Oscuro</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
-          </ul>
-        </li>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="cart.html">Carrito</a></li>
+              <li><a id="darkmode" class="dropdown-item">Modo Oscuro</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
     <div class="container">
-      <!-- <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-        </div>   -->
+
       <div id="container-cart">
         <h2>Carrito de compras</h2>
         <h4>Artículos a comprar</h4>
@@ -66,28 +66,93 @@
             <td id="cartImg"></td>
             <td id="cartName"></td>
             <td id="cartCost"></td>
-            <td id="cartAmount"><input type="text"> </td>
+            <td id="cartAmount"> </td>
             <td id="cartSubt"></td>
           </tr>
         </table>
 
 
-        <!-- <table id="table-cart">
-          <thead>
-            <tr>
-              <td  id="cartImg"></td>  Espacio vacío para debajo poner la img auto -->
-              <!-- <th>Nombre</th>
-              <th>Costo</th>
-              <th>Cantidad</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="cartImg">
 
-          </tbody>
-        </table>  -->
+        <!-- Controles para Envio-->
+        <div id="controlesEnvio">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <h2>Tipo de Envío</h2>
+                <select id="tipoEnvio" class="form-control">
+                  <option value="">Selecciona el tipo de envío:</option>
+                  <option value="estandar">Estándar 12 a 15 dias (5%)</option>
+                  <option value="express">Express 5 a 8 dias (7%)</option>
+                  <option value="sameDay">Premium 2 a 5 dias (15%)</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <h2>Dirección de Entrega</h2>
+                <label for="calle">Calle:</label>
+                <input type="text" id="calle" class="form-control"><br>
+              </div>
+            </div>
+            <div class="form-group col-md-6 ">
+
+              <label for="numero">Número:</label>
+              <input type="text" id="numero" class="form-control"><br>
+            </div>
+            <div class="form-group col-md-6 ">
+              <label for="esquina">Esquina:</label>
+              <input type="text" id="esquina" class="form-control"><br>
+            </div>
+
+            <div  class="form-group col-md-6 ">
+              <h2>Costos</h2>
+              <table id="tablaDePrecios" class="default">
+                  <tr><td>Subtotal</td><td id="tdSubtotal">USD 0</td></tr>
+                  <tr><td>Costo de envio</td><td id="tdCostoEnvio">USD 0</td></tr>
+                  <tr><td>Total($)</td><td id="tdTotal"><b>USD 0</b></td></tr>
+              </table>
+            </div>
+
+            <div class="form-group col-md-6 ">
+              <h2>Forma de pago</h2>
+              <p>No ha seleccionado metodo de pago*******</p> <input type="button" value="seleccionar" id="btnSeleccionar" >
+            </div>
+            <dialog id="popupMetodo" class="container">
+
+                <h2>Forma de pago</h2>
+                <hr>
+                <form action="">
+                <input type="radio"  name="" id="chTarjetaCredito">Tarjeta de credito <hr>
+                <label for=""  >Número de tarjeta</label>
+                <input type="text" size="24" id="txtNumTarjeta">
+                <label for="">Código de seg.</label>
+                <input type="text" id="txtCodSeguridadTarjeta"><br><br>
+                <label for="">Vencimiento (MM/AA)</label>
+                <input type="text" id="txtVencimientoTarjeta"><br><br>
+              </form>
+              
+              <form action="">
+                <input type="radio" name="" id="chBancaria">Cuenta bancaria 
+              <hr>
+                <label for="">Número de cuenta</label>
+                <input type="text" id="txtNumBancaria"></form>
+<hr>
+                <input type="button" value="cerrar" id="cerrarPopup">
+        </div>
+            </dialog>
+            <!--<div class="form-group col-md-6 ">
+              <label for="submit"></label>
+              <button type="submit" class="btn btn-primary " id="submit">Enviar</button><br>
+            </div>-->
+        
+
+        </form>
+</div>
+
+
 
       </div>
+
+
+    </div>
     </div>
   </main>
   <footer class="text-muted">
@@ -95,7 +160,8 @@
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p class="links">Este sitio forma parte de <a class="links" href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p class="links">Este sitio forma parte de <a class="links" href="https://jovenesaprogramar.edu.uy/"
+          target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
   <div id="spinner-wrapper">
