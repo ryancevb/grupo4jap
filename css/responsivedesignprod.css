@@ -1,0 +1,48 @@
+@media only screen and (max-width:500px) {
+    .products{
+        width: 35vh;
+        margin-left: 0;
+    }
+    .text-end{
+margin-left: 0;
+margin-top: 3vh;
+
+    }
+
+    #input-search{
+        margin-bottom: 3vh;
+    }
+.cant p{
+    margin-left: 0;
+}
+
+.container-prod{
+    margin-left: 0;
+    width: 35vh;
+    display: block;
+    margin-top: 2vh;
+}
+div p {
+    margin-left: 0;
+    font-size: 15px;
+    text-align: left;
+}
+#container_div-sold{
+text-align: left;
+margin-left: 0;
+font-size: 10px;
+}
+#div_img-prod{
+  width: 50vh;
+}
+.row{
+    display:block;
+}
+#rangeFilterCountMax{
+    margin-bottom: 3vh;
+}
+.row p {
+   margin-right: 100vh;
+font-size: 17px ;
+}
+}
