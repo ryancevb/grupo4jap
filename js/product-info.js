@@ -1,4 +1,4 @@
-let receivedProd = localStorage.getItem("Id-Prod");
+let receivedProd = JSON.parse(localStorage.getItem("Id-Prod"));
 const container = document.getElementById("infoProd");
 const contImg = document.getElementById("contImg");
 let containercomm = document.getElementById("containercommProd");
@@ -177,9 +177,9 @@ async function callJSONrel() {
     } catch (error) {
         console.log(error)
     }
-    // selectedProduct(rel)
 }
 callJSONrel()
+
 function showInforel(rel) {
     
    containerrel.innerHTML += ""
@@ -197,10 +197,7 @@ function showInforel(rel) {
         </div>
             `;
     }
-
-   
 }
-
 
 
 function selectedRelProduct(rel){
@@ -211,10 +208,6 @@ function selectedRelProduct(rel){
         window.location = "product-info.html"
     } )
 }
-
-// showInforel(rel);
-
-
 
 
 // Modo noche
@@ -255,11 +248,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Obtener el ID para comprar y agregar en el carrito 
 
-function getID(){
-     document.getElementById("btnCart").addEventListener("click", function () {
 
-      localStorage.setItem("catBuyID", receivedProd);
-      window.location = "cart.html";
-    });
-}
-   
+
+  document.getElementById("btnCart").addEventListener("click", function () {
+  let receivedProdArray = JSON.parse(localStorage.getItem("catBuyID"));
+    // let receivedProdArray = [];
+    if (receivedProdArray !== null) {
+     
+     console.log(receivedProdArray)
+      receivedProdArray.push(receivedProd);
+      localStorage.setItem("catBuyID", JSON.stringify(receivedProdArray));
+    }
+  window.location = "cart.html";
+  })

@@ -5,11 +5,12 @@ const cartName = document.getElementById("cartName");
 const cartCost = document.getElementById("cartCost");
 const cartAmount = document.getElementById("cartAmount");
 const cartSubt = document.getElementById("cartSubt");
-const cartBuyID = localStorage.getItem("catBuyID");
+const cartBuyID = JSON.parse(localStorage.getItem("catBuyID"));
 const cartBuySTotal = document.getElementById("tdSubtotal");
 const cartEnvioTotal = document.getElementById("tdCostoEnvio");
 const cartTotal = document.getElementById("tdTotal");
 const popup = document.getElementById("popupMetodo");
+const  buttonTrash = document.querySelector(".trash");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
 
@@ -129,37 +130,29 @@ function subtotal(cost, amount) {
 getCartInfo();
 
 //Se agrega al carrito la compra hecha en el product-info
-
-//Se obtiene el JSON 
-async function callJSON() {
-    try {
-        const response = await fetch("https://japceibal.github.io/emercado-api/products/" + cartBuyID + ".json")
-        const data = await response.json()
-        item = data;
-        return showInfo(item)
-    } catch (error) {
-        console.log(error)
-    }
-
-}
 //Funcion para agregar los datos al carrito, si no se encuentra ningún valor en localStorage no se ejecuta 
 function nameX(cartBuyID) {
     if (cartBuyID !== null) {
         callJSON()
     }
+    
 }
-nameX(cartBuyID);
+
+nameX();
+
+//Se obtiene el JSON 
+async function callJSON() {
 
 
-function showInfo(item) {
-
-
-
+for (let i = 0; i < cartBuyID.length; i++) {
+  const cartProd = cartBuyID[i];
+  try {
+    const response = await fetch("https://japceibal.github.io/emercado-api/products/" + cartProd + ".json");
+    const data = await response.json();
     ///Se crea el <tr>
     var row = document.createElement("TR");
     row.setAttribute("id", "trTD");
     showCart.appendChild(row);
-    let cell = document.getElementById("trTD");
    
 
 
@@ -169,6 +162,7 @@ function showInfo(item) {
     var column3 = document.createElement("TD");
     var column4 = document.createElement("TD");
     var column5 = document.createElement("TD");
+    var column6 = document.createElement("TD");
 
     column1.setAttribute("class", "cartImg");
     column2.setAttribute("class", "cartName");
@@ -189,33 +183,62 @@ function showInfo(item) {
     //imagen
     let dataImg = document.createElement("img");
     dataImg.setAttribute("class", "cartImg");
-    dataImg.src = `${item.images[0]}`;
+    dataImg.src = `${data.images[0]}`;
 
      //Contador
     let count = document.createElement("input");
     count.setAttribute("type", "number");
     count.addEventListener("input", () => {
-        subtotal(item.cost, parseInt(count.value));
+        subtotal(data.cost, parseInt(count.value));
     });
 
     //Datos
-    let currency = document.createTextNode(item.currency + " ");
-    let cost = document.createTextNode(item.cost);
-    let prodName = document.createTextNode(item.name)
+    let currency = document.createTextNode(data.currency + " ");
+    let cost = document.createTextNode(data.cost);
+    let prodName = document.createTextNode(data.name);
 
+    //Columna para eliminar los datos 
+    let deleteTrash = document.createElement("i");
+    deleteTrash.setAttribute("class","fa fa-trash-o trash");
+    deleteTrash.style.fontSize = "36px";
+    
+    deleteTrash.addEventListener("click", ()=>{
+         cartBuyID.splice(i, 1);
+         localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
+         showCart.removeChild(row)
+    });
+    
      //Se crea los elementos de adentro de los <td>
     column2.appendChild(prodName);
     column3.appendChild(currency);
     column3.appendChild(cost);
     column4.appendChild(count);
     column1.appendChild(dataImg);
+    column6.appendChild(deleteTrash);
 
    // se ponen adentro de lor <tr> los <td>
-    cell.appendChild(column1);
-    cell.appendChild(column2);
-    cell.appendChild(column3);
-    cell.appendChild(column4);
-    cell.appendChild(column5);
+    row.appendChild(column1);
+    row.appendChild(column2);
+    row.appendChild(column3);
+    row.appendChild(column4);
+    row.appendChild(column5);
+    row.appendChild(column6);
 
-};
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+}
+
+//Función para eliminar el 1er elemento producto 
+buttonTrash.addEventListener("click", ()=>{
+    cartBuyID.splice(0, 1);
+    localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
+    showCart.style.display = "none";
+    
+});
+
+
+
 
