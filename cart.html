@@ -65,7 +65,7 @@
             <th>Subtotal</th>
             <th>Eliminar</th>
           </tr>
-          <tr>
+          <tr id="firstProduct">
             <td id="cartImg"></td>
             <td id="cartName"></td>
             <td id="cartCost"></td>
@@ -85,7 +85,7 @@
                 <h2>Tipo de Envío</h2>
                 <div>
                   <select id="tipoEnvio" class="form-control" required>
-                    <option value="disabled" selected disabled>Selecciona el tipo de envío:</option>
+                    <option value="" selected disabled>Selecciona el tipo de envío:</option>
                     <option value="estandar">Estándar 12 a 15 dias (5%)</option>
                     <option value="express">Express 5 a 8 dias (7%)</option>
                     <option value="sameDay">Premium 2 a 5 dias (15%)</option>
@@ -139,10 +139,13 @@
             <br>
             <div id="modal">
               <!-- Boton modal -->
-              Método de pago
+              
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Seleccionar
+                Seleccionar Método de pago
               </button>
+              <div class="invalid-feedback">
+                Debe seleccionar un método de pago
+              </div>
               <!-- Modal -->
               <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">

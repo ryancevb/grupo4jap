@@ -10,10 +10,11 @@ const cartBuySTotal = document.getElementById("tdSubtotal");
 const cartEnvioTotal = document.getElementById("tdCostoEnvio");
 const cartTotal = document.getElementById("tdTotal");
 const popup = document.getElementById("popupMetodo");
+const buttonTrash = document.querySelector(".trash");
 const modal = document.getElementById("modal-content");
-const  buttonTrash = document.querySelector(".trash");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
+
 
 var totalComprado = 0;
 
@@ -30,8 +31,12 @@ function getCartInfo() {
                 dataImg.src = `${elem.image}`;
                 let count = document.createElement("input");
                 count.setAttribute("type", "number");
+                count.oninput = function() {
+                    if (this.value < 0) {
+                      this.value = 0;
+                    } }
                 count.addEventListener("input", () => {
-                    subtotal(elem.unitCost, parseInt(count.value));
+                    subtotal(elem.unitCost, parseInt(count.value), elem.currency);
                 });
                 cartAmount.appendChild(count);
                 let currency = document.createTextNode(elem.currency + " ");
@@ -52,17 +57,25 @@ document.getElementById("tipoEnvio").addEventListener("change", () => { mostrarT
 function mostrarTotales(){
 let stotal;
 let subt = document.getElementById("cartSubt").innerHTML;
-let nsubt = document.getElementById("subtNewProd").innerHTML;
-    tipoEnvio = document.getElementById("tipoEnvio").value;
+let nsubt;
+tipoEnvio = document.getElementById("tipoEnvio").value;
    
-    if(tipoEnvio != ""){
-if(isNaN(parseInt(subt)) ||isNaN(parseInt(nsubt))){
+if(tipoEnvio != ""){
+    if(isNaN(parseInt(subt)) ||isNaN(parseInt(nsubt))){
+        stotal = subt;
+        let elements = document.querySelectorAll('[id^="subtNewProd"]');
+        elements.forEach((element) => {
+            nsubt = Number(element.innerHTML);
+            stotal = Number(stotal) + Number(nsubt);
+        });
 
-    stotal = 0;
-}
-else{   
-     stotal = parseInt(subt) + parseInt(nsubt);
-}
+     }else{
+        let elements = document.querySelectorAll('[id^="subtNewProd"]');
+        elements.forEach((element) => {
+            nsubt += parseInt(element.innerHTML);
+        });
+        stotal = parseInt(subt) + parseInt(nsubt);
+    }
     let costEnvio = 0;
     letcostTotal = 0;
     
@@ -76,23 +89,35 @@ else{
         costEnvio = stotal*0.15
     }
 
-    costTotal = stotal + costEnvio;
+    costTotal = parseInt(stotal) + parseInt(costEnvio);
 
     cartBuySTotal.innerHTML = "USD "+ stotal;
-    cartEnvioTotal.innerHTML = "USD "+ costEnvio; 
-    cartTotal.innerHTML = "USD " + costTotal 
+    cartEnvioTotal.innerHTML = "USD "+ costEnvio.toFixed(2); 
+    cartTotal.innerHTML = "USD " + costTotal.toFixed(); 
 }
 
 }
+
 
 //Se calcula el subtotal de la compra del articulo
-function subtotal(cost, amount) {
-    
-    let subt = (cost * amount);
-    console.log(cost, amount, subt);
-    cartSubt.innerHTML = (subt); 
+function subtotal(cost, amount, currency) {
+    if (currency !== "USD") {
+        let subt = ((cost / 40) * amount);
+            while (cartSubt.firstChild) {
+                cartSubt.removeChild(cartSubt.firstChild);
+            }
+        cartSubt.appendChild(document.createTextNode(subt)); 
+        totalComprado += subt;
 
-    totalComprado += subt;
+    } else{
+    let subt = (cost * amount);
+        while (cartSubt.firstChild) {
+            cartSubt.removeChild(cartSubt.firstChild);
+        }
+    cartSubt.appendChild(document.createTextNode(subt)); 
+
+    totalComprado += subt;  
+    }
     mostrarTotales();
 }
 
@@ -120,7 +145,7 @@ for (let i = 0; i < cartBuyID.length; i++) {
     const data = await response.json();
     ///Se crea el <tr>
     var row = document.createElement("TR");
-    row.setAttribute("id", "trTD");
+    row.setAttribute("class", "trTD");
     showCart.appendChild(row);
    
 
@@ -137,16 +162,27 @@ for (let i = 0; i < cartBuyID.length; i++) {
     column2.setAttribute("class", "cartName");
     column3.setAttribute("class", "cartCost");
     column4.setAttribute("class", "cartAmount");
-    column5.setAttribute("id", "subtNewProd");
+    column5.setAttribute("id", `subtNewProd${data.id}`);
    
 
     //Subtotal
-    function subtotal(cost, amount) {
-        const subtNewProd = document.getElementById("subtNewProd");
-        let subt = cost;
-        subt = (cost * amount);
-        console.log(cost, amount, subt);
-        subtNewProd.innerHTML = subt;
+    function subtotal(cost, amount, currency) {
+        let subtNewProd = document.getElementById(`subtNewProd${data.id}`);
+        if (currency !== "USD") {
+            let subt = ((cost / 40) * amount);
+            while (subtNewProd.firstChild) {
+                subtNewProd.removeChild(subtNewProd.firstChild);
+            }
+            subtNewProd.appendChild(document.createTextNode(subt));
+        } else {
+            let subt = cost;
+            subt = (cost * amount);
+            while (subtNewProd.firstChild) {
+                subtNewProd.removeChild(subtNewProd.firstChild);
+            }
+            subtNewProd.appendChild(document.createTextNode(subt));
+        }
+        mostrarTotales();
     }
 
     //imagen
@@ -157,8 +193,13 @@ for (let i = 0; i < cartBuyID.length; i++) {
      //Contador
     let count = document.createElement("input");
     count.setAttribute("type", "number");
+   
+    count.oninput = function() {
+        if (this.value < 0) {
+          this.value = 0;
+        } }
     count.addEventListener("input", () => {
-        subtotal(data.cost, parseInt(count.value));
+        subtotal(data.cost, parseInt(count.value), data.currency);
     });
 
     //Datos
@@ -186,11 +227,12 @@ for (let i = 0; i < cartBuyID.length; i++) {
     column6.appendChild(deleteTrash);
 
    // se ponen adentro de lor <tr> los <td>
-    cell.appendChild(column1);
-    cell.appendChild(column2);
-    cell.appendChild(column3);
-    cell.appendChild(column4);
-    cell.appendChild(column5);
+    row.appendChild(column1);
+    row.appendChild(column2);
+    row.appendChild(column3);
+    row.appendChild(column4);
+    row.appendChild(column5);
+    row.appendChild(column6);
 
   } catch (error) {
     console.error(error);
@@ -198,12 +240,12 @@ for (let i = 0; i < cartBuyID.length; i++) {
 }
 
 }
-
+let firstProduct = document.getElementById("firstProduct");
 //Función para eliminar el 1er elemento producto 
 buttonTrash.addEventListener("click", ()=>{
     cartBuyID.splice(0, 1);
     localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
-    showCart.style.display = "none";
+    firstProduct.style.display = "none";
     
 });
 
@@ -213,43 +255,45 @@ buttonTrash.addEventListener("click", ()=>{
 
 // Validación del formulario y el modal
 (function () {
-  'use strict'
-
+    'use strict'
   
-  var forms = document.querySelectorAll('.needs-validation')
-  Array.from(forms)
-    .forEach(function (form) {
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault()
-          event.stopPropagation()
-        }
+    
+    var forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+  
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })();
+  
+  document.getElementById("chTarjetaCredito").addEventListener("change", () => {
+      if(document.getElementById("chTarjetaCredito").checked){
+          document.getElementById("chBancaria").checked = false
+  
+          document.getElementById("txtNumTarjeta").disabled = false;
+          document.getElementById("txtCodSeguridadTarjeta").disabled = false;
+          document.getElementById("txtVencimientoTarjeta").disabled = false;
+  
+          document.getElementById("txtNumBancaria").disabled = true;
+  
+      }
+  });
+  document.getElementById("chBancaria").addEventListener("change", () => {
+      if(document.getElementById("chBancaria").checked){
+          document.getElementById("chTarjetaCredito").checked = false
+  
+          document.getElementById("txtNumBancaria").disabled = false;
+          document.getElementById("txtNumTarjeta").disabled = true;
+          document.getElementById("txtCodSeguridadTarjeta").disabled = true;
+          document.getElementById("txtVencimientoTarjeta").disabled = true;
+          
+      }
+  });
 
-        form.classList.add('was-validated')
-      }, false)
-    })
-})();
 
-document.getElementById("chTarjetaCredito").addEventListener("change", () => {
-    if(document.getElementById("chTarjetaCredito").checked){
-        document.getElementById("chBancaria").checked = false
-
-        document.getElementById("txtNumTarjeta").disabled = false;
-        document.getElementById("txtCodSeguridadTarjeta").disabled = false;
-        document.getElementById("txtVencimientoTarjeta").disabled = false;
-
-        document.getElementById("txtNumBancaria").disabled = true;
-
-    }
-});
-document.getElementById("chBancaria").addEventListener("change", () => {
-    if(document.getElementById("chBancaria").checked){
-        document.getElementById("chTarjetaCredito").checked = false
-
-        document.getElementById("txtNumBancaria").disabled = false;
-        document.getElementById("txtNumTarjeta").disabled = true;
-        document.getElementById("txtCodSeguridadTarjeta").disabled = true;
-        document.getElementById("txtVencimientoTarjeta").disabled = true;
-        
-    }
-});
