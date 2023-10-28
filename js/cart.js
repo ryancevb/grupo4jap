@@ -10,6 +10,7 @@ const cartBuySTotal = document.getElementById("tdSubtotal");
 const cartEnvioTotal = document.getElementById("tdCostoEnvio");
 const cartTotal = document.getElementById("tdTotal");
 const popup = document.getElementById("popupMetodo");
+const modal = document.getElementById("modal-content");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
 
@@ -83,38 +84,6 @@ else{
 
 }
 
-document.getElementById("btnSeleccionar").addEventListener("click", () =>{
-    popup.showModal();
-
-})
-document.getElementById("cerrarPopup").addEventListener("click", () =>{
-    popup.close();
-
-})
-
-document.getElementById("chTarjetaCredito").addEventListener("change", () => {
-    if(document.getElementById("chTarjetaCredito").checked){
-        document.getElementById("chBancaria").checked = false
-
-        document.getElementById("txtNumTarjeta").disabled = false;
-        document.getElementById("txtCodSeguridadTarjeta").disabled = false;
-        document.getElementById("txtVencimientoTarjeta").disabled = false;
-
-        document.getElementById("txtNumBancaria").disabled = true;
-
-    }
-})
-document.getElementById("chBancaria").addEventListener("change", () => {
-    if(document.getElementById("chBancaria").checked){
-        document.getElementById("chTarjetaCredito").checked = false
-
-        document.getElementById("txtNumBancaria").disabled = false;
-        document.getElementById("txtNumTarjeta").disabled = true;
-        document.getElementById("txtCodSeguridadTarjeta").disabled = true;
-        document.getElementById("txtVencimientoTarjeta").disabled = true;
-
-    }
-})
 //Se calcula el subtotal de la compra del articulo
 function subtotal(cost, amount) {
     
@@ -219,3 +188,46 @@ function showInfo(item) {
 
 };
 
+
+// Validación del formulario y el modal
+(function () {
+  'use strict'
+
+  
+  var forms = document.querySelectorAll('.needs-validation')
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})();
+
+document.getElementById("chTarjetaCredito").addEventListener("change", () => {
+    if(document.getElementById("chTarjetaCredito").checked){
+        document.getElementById("chBancaria").checked = false
+
+        document.getElementById("txtNumTarjeta").disabled = false;
+        document.getElementById("txtCodSeguridadTarjeta").disabled = false;
+        document.getElementById("txtVencimientoTarjeta").disabled = false;
+
+        document.getElementById("txtNumBancaria").disabled = true;
+
+    }
+});
+document.getElementById("chBancaria").addEventListener("change", () => {
+    if(document.getElementById("chBancaria").checked){
+        document.getElementById("chTarjetaCredito").checked = false
+
+        document.getElementById("txtNumBancaria").disabled = false;
+        document.getElementById("txtNumTarjeta").disabled = true;
+        document.getElementById("txtCodSeguridadTarjeta").disabled = true;
+        document.getElementById("txtVencimientoTarjeta").disabled = true;
+        
+    }
+});

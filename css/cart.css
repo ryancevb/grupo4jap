@@ -48,17 +48,15 @@ box-shadow: 2px 2px 8px 2px black;
 #tablaDePrecios,th,td {
     border: 1px solid black;
 }
-#cerrarPopup{
-    width: 12vh;
-border-radius: 0.25rem;
-background-color: white;
-box-shadow: 2px 2px 8px 2px black;
+
 }
-#popupMetodo{
-    border-radius: 0.25rem;
-    box-shadow: 2px 2px 8px 2px black;
-    width: 60vh;
-    height: 43vh;
-    align-items: left;
-    justify-content: left;
+form {
+    position:relative;
+}
+#modal-content{
+    width: 400px;
+    position:absolute;
+    top: 50px;
+    left: 50px;
+    display:none;
 }
