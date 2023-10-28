@@ -250,9 +250,6 @@ buttonTrash.addEventListener("click", ()=>{
 });
 
 
-
-
-
 // Validación del formulario y el modal
 (function () {
     'use strict'
@@ -296,4 +293,21 @@ buttonTrash.addEventListener("click", ()=>{
       }
   });
 
+
+
+
+
+
+
+// validando el tipo envio
+document.getElementById("buy-btn").addEventListener("click", function () {
+  var tipoEnvio = document.getElementById("tipoEnvio");
+
+  
+  if (tipoEnvio.value === "disabled") {
+      tipoEnvio.setCustomValidity("Seleccione un tipo de envío válido.");
+  } else {
+      tipoEnvio.setCustomValidity("");
+  }
+});
 
