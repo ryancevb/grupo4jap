@@ -1,9 +1,11 @@
+
 body {
     background-color: orangered;
     background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6), rgba(215, 78, 54, 0.9));
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    
 }
 
 

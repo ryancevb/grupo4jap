@@ -27,3 +27,36 @@ th, td{
 .form-group{
     margin: 0 auto;
 }
+
+
+#btnSeleccionar{
+width: 12vh;
+border-radius: 0.25rem;
+background-color: white;
+box-shadow: 2px 2px 8px 2px black;
+
+}
+#tablaDePrecios{
+  background-color: white;
+  border-radius: 0.25rem;
+  background-clip: padding-box;
+  width: 100%;
+  box-shadow: 1px, 3px, 3px;
+  height: 8,5vh;
+  box-shadow: 2px 2px 8px 2px black;
+}
+#tablaDePrecios,th,td {
+    border: 1px solid black;
+}
+
+}
+form {
+    position:relative;
+}
+#modal-content{
+    width: 400px;
+    position:absolute;
+    top: 50px;
+    left: 50px;
+    display:none;
+}

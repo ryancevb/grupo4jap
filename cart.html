@@ -75,44 +75,146 @@
 
         <!-- Controles para Envio-->
         <div id="controlesEnvio">
-          <form>
+          <form class="needs-validation" novalidate>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <h2>Tipo de Envío</h2>
-                <select id="tipoEnvio" class="form-control">
-                  <option value="">Selecciona el tipo de envío:</option>
-                  <option value="estandar">Estándar</option>
-                  <option value="express">Express</option>
-                  <option value="sameDay">Entrega el mismo día</option>
-                </select>
+                <div>
+                  <select id="tipoEnvio" class="form-control" required>
+                    <option value="disabled" selected disabled>Selecciona el tipo de envío:</option>
+                    <option value="estandar">Estándar 12 a 15 dias (5%)</option>
+                    <option value="express">Express 5 a 8 dias (7%)</option>
+                    <option value="sameDay">Premium 2 a 5 dias (15%)</option>
+                  </select>
+                </div>
               </div>
               <div class="form-group col-md-6">
                 <h2>Dirección de Entrega</h2>
-                <label for="calle">Calle:</label>
-                <input type="text" id="calle" class="form-control"><br>
+                <div id="calle">
+                  <label for="calle">Calle:</label>
+                  <input type="text" id="calle" class="form-control" required>
+                  <div class="valid-feedback">Correcto!</div>
+                  <div class="invalid-feedback">Por favor, ingrese su Calle.</div>
+                </div>
               </div>
             </div>
             <div class="form-group col-md-6 ">
-
-              <label for="numero">Número:</label>
-              <input type="text" id="numero" class="form-control"><br>
+              <div id="numero">
+                <label for="numero">Número:</label>
+                <input type="text" id="numero" class="form-control" required><br>
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor, ingrese su Número.</div>
+              </div>
             </div>
             <div class="form-group col-md-6 ">
-              <label for="esquina">Esquina:</label>
-              <input type="text" id="esquina" class="form-control"><br>
+              <div id="esquina">
+                <label for="esquina">Esquina:</label>
+                <input type="text" id="esquina" class="form-control" required>
+                <div class="valid-feedback">Correcto!</div>
+                <div class="invalid-feedback">Por favor, ingrese su Esquina.</div>
+              </div>
+
+              <div class="form-group col-md-6 ">
+                <h2>Costos</h2>
+                <table id="tablaDePrecios" class="default">
+                  <tr>
+                    <td>Subtotal</td>
+                    <td id="tdSubtotal">USD 0</td>
+                  </tr>
+                  <tr>
+                    <td>Costo de envio</td>
+                    <td id="tdCostoEnvio">USD 0</td>
+                  </tr>
+                  <tr>
+                    <td>Total($)</td>
+                    <td id="tdTotal"><b>USD 0</b></td>
+                  </tr>
+                </table>
+              </div>
             </div>
-            <div class="form-group col-md-6 ">
-              <label for="submit"></label>
-              <button type="submit" class="btn btn-primary " id="submit">Enviar</button><br>
+            <br>
+            <div id="modal">
+              <!-- Boton modal -->
+              Método de pago
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Seleccionar
+              </button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title" id="exampleModalLabel">Método de Pago</h3>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <div id="chtarjeta">
+                        <label for="">Tarjeta de crédito</label>
+                        <input type="radio" name="" id="chTarjetaCredito" required>
+                      </div>
+
+                      <hr>
+                      <div class="modal-body">
+                        <div id="num-tarjeta">
+                          <label for="">Número de tarjeta</label>
+                          <input type="text" class="form-control" id="txtNumTarjeta" required>
+                          <div class="valid-feedback">Correcto!</div>
+                          <div class="invalid-feedback">Por favor, introduce un número de tarjeta válido.</div>
+                        </div>
+                      </div>
+
+                      <div class="modal-body">
+                        <div id="cod-tarjeta">
+                          <label for="">Código de seg.</label>
+                          <input type="password" class="form-control" id="txtCodSeguridadTarjeta" required>
+                          <div class="valid-feedback">Correcto!</div>
+                          <div class="invalid-feedback">Introduce correctamente el código de seguridad de la tarjeta.
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="modal-body">
+                        <div id="ven-tarjeta">
+                          <label for="">Vencimiento (DD/MM/AA)</label>
+                          <input type="date" class="form-control" id="txtVencimientoTarjeta" required>
+                          <div class="valid-feedback">Correcto!</div>
+                          <div class="invalid-feedback">Ingrese el vencimiento de la tarjeta.</div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="modal-body">
+                        <div id="chcuentaBancaria">
+                          <label for="">Cuenta Bancaria</label>
+                          <input type="radio" name="" id="chBancaria" required>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="modal-body">
+                        <div id="num-cuenta">
+                          <label for="">Número de cuenta</label>
+                          <input type="text" class="form-control" id="txtNumBancaria" required>
+                          <div class="valid-feedback">Correcto!</div>
+                          <div class="invalid-feedback">Ingrese número de la cuenta bancaria.</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        
-
-        </form>
-</div>
-
-
-
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" id="buy-btn">Comprar</button>
+      </form>
       </div>
+
+
+
+    </div>
 
 
     </div>

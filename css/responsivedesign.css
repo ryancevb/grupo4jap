@@ -120,5 +120,18 @@ font-size: 15px;
         }
     }
 
+/*Products*/
+@media only screen and (min-width: 400px) {
+    .products{
+        height: 150px;
+        width: 65%;
+        margin: 5px;
+        text-align: center;
+        justify-content: center;
+    }
+.container-prod{
+    text-align: right;
+}
+}
 
     
