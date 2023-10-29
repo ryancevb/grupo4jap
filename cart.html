@@ -85,11 +85,12 @@
                 <h2>Tipo de Envío</h2>
                 <div>
                   <select id="tipoEnvio" class="form-control" required>
-                    <option value="" selected disabled>Selecciona el tipo de envío:</option>
+                    <option value="disabled" selected disabled>Selecciona el tipo de envío:</option>
                     <option value="estandar">Estándar 12 a 15 dias (5%)</option>
                     <option value="express">Express 5 a 8 dias (7%)</option>
                     <option value="sameDay">Premium 2 a 5 dias (15%)</option>
                   </select>
+                  <div class="invalid-feedback">Seleccione un tipo de envío válido.</div>
                 </div>
               </div>
               <div class="form-group col-md-6">
@@ -105,7 +106,7 @@
             <div class="form-group col-md-6 ">
               <div id="numero">
                 <label for="numero">Número:</label>
-                <input type="text" id="numero" class="form-control" required><br>
+                <input type="number" id="numero" class="form-control" required><br>
                 <div class="valid-feedback">Correcto!</div>
                 <div class="invalid-feedback">Por favor, ingrese su Número.</div>
               </div>
@@ -140,9 +141,10 @@
             <div id="modal">
               <!-- Boton modal -->
               
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" id="btnMPago" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Seleccionar Método de pago
               </button>
+              <div id="payment"></div>
               <div class="invalid-feedback">
                 Debe seleccionar un método de pago
               </div>
@@ -165,7 +167,7 @@
                       <div class="modal-body">
                         <div id="num-tarjeta">
                           <label for="">Número de tarjeta</label>
-                          <input type="text" class="form-control" id="txtNumTarjeta" required>
+                          <input type="text" class="form-control" id="txtNumTarjeta" disabled required>
                           <div class="valid-feedback">Correcto!</div>
                           <div class="invalid-feedback">Por favor, introduce un número de tarjeta válido.</div>
                         </div>
@@ -174,7 +176,7 @@
                       <div class="modal-body">
                         <div id="cod-tarjeta">
                           <label for="">Código de seg.</label>
-                          <input type="password" class="form-control" id="txtCodSeguridadTarjeta" required>
+                          <input type="password" class="form-control" id="txtCodSeguridadTarjeta" disabled required>
                           <div class="valid-feedback">Correcto!</div>
                           <div class="invalid-feedback">Introduce correctamente el código de seguridad de la tarjeta.
                           </div>
@@ -184,7 +186,7 @@
                       <div class="modal-body">
                         <div id="ven-tarjeta">
                           <label for="">Vencimiento (DD/MM/AA)</label>
-                          <input type="date" class="form-control" id="txtVencimientoTarjeta" required>
+                          <input type="date" class="form-control" id="txtVencimientoTarjeta" disabled required>
                           <div class="valid-feedback">Correcto!</div>
                           <div class="invalid-feedback">Ingrese el vencimiento de la tarjeta.</div>
                         </div>
@@ -193,14 +195,14 @@
                       <div class="modal-body">
                         <div id="chcuentaBancaria">
                           <label for="">Cuenta Bancaria</label>
-                          <input type="radio" name="" id="chBancaria" required>
+                          <input type="radio" name="" id="chBancaria"  required>
                         </div>
                       </div>
                       <hr>
                       <div class="modal-body">
                         <div id="num-cuenta">
                           <label for="">Número de cuenta</label>
-                          <input type="text" class="form-control" id="txtNumBancaria" required>
+                          <input type="text" class="form-control" id="txtNumBancaria"  disabled required>
                           <div class="valid-feedback">Correcto!</div>
                           <div class="invalid-feedback">Ingrese número de la cuenta bancaria.</div>
                         </div>
@@ -209,6 +211,7 @@
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -217,6 +220,7 @@
         <br>
         <button type="submit" class="btn btn-primary" id="buy-btn">Comprar</button>
       </form>
+    
       </div>
 
 

@@ -248,20 +248,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Obtener el ID para comprar y agregar en el carrito 
 
-/*
-
-  document.getElementById("btnCart").addEventListener("click", function () {
-  let receivedProdArray = JSON.parse(localStorage.getItem("catBuyID"));
-    // let receivedProdArray = [];
-    if (receivedProdArray !== null) {
-     
-     console.log(receivedProdArray)
-      receivedProdArray.push(receivedProd);
-      localStorage.setItem("catBuyID", JSON.stringify(receivedProdArray));
-    }
-  window.location = "cart.html";
-  })*/
-
   function getID(){
     document.getElementById("btnCart").addEventListener("click", function () {
       let receivedProdArray = JSON.parse(localStorage.getItem("catBuyID"));
