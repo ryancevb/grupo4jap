@@ -75,11 +75,13 @@ function mostrarTotales() {
 
     if (tipoEnvio != "") {
         if (isNaN(parseInt(subt)) || isNaN(parseInt(nsubt))) {
-            stotal = subt;
             let elements = document.querySelectorAll('[id^="subtNewProd"]');
             elements.forEach((element) => {
+                console.log(subt + "sisisisi")
                 nsubt = Number(element.innerHTML);
-                stotal = Number(stotal) + Number(nsubt);
+                stotal = Number(subt) + Number(nsubt);
+
+               
             });
 
         } else {
@@ -87,7 +89,7 @@ function mostrarTotales() {
             elements.forEach((element) => {
                 nsubt += parseInt(element.innerHTML);
             });
-            stotal = parseInt(subt) + parseInt(nsubt);
+            stotal = parseInt(subt) + parseInt(nsubt); 
         }
         let costEnvio = 0;
         letcostTotal = 0;
@@ -104,9 +106,11 @@ function mostrarTotales() {
 
         costTotal = parseInt(stotal) + parseInt(costEnvio);
 
-
+        if(nsubt === ""){
+            cartBuySTotal.innerHTML = "USD " + subt;
+        }
         cartBuySTotal.innerHTML = "USD " + stotal;
-        console.log(stotal)
+        
         cartEnvioTotal.innerHTML = "USD " + costEnvio.toFixed(2);
         cartTotal.innerHTML = "USD " + costTotal.toFixed();
     }
@@ -264,23 +268,23 @@ async function callJSON() {
 
 function updatesubtotal(cost, amount, currency) {
     if (currency !== "USD") {
-        let subt = ((cost / 40) * (amount - 1));
+        let upSubt = ((cost / 40) * (amount - 1));
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
-        cartSubt.appendChild(document.createTextNode(subt));
-        totalComprado += subt;
+        cartSubt.appendChild(document.createTextNode(upSubt));
+        totalComprado += upSubt;
 
     } else {
-        let subt = (cost * (amount - 1));
+        let upSubt = (cost * (amount - 1));
         console.log(amount + "2cantidad")
-        console.log(subt + "2subt")
+        console.log(upSubt + "2subt")
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
-        cartSubt.appendChild(document.createTextNode(subt));
+        cartSubt.appendChild(document.createTextNode(upSubt));
 
-        totalComprado += subt;
+        totalComprado += upSubt;
     }
 
     mostrarTotales();
@@ -309,6 +313,9 @@ function updatesubtotal(cost, amount, currency) {
                 }
 
                 form.classList.add('was-validated')
+                if(form.checkValidity()){
+                    alert("Compra hecha satisfactoriamente!!");
+                }
             }, false)
         })
 })();
