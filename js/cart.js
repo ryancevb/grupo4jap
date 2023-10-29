@@ -334,7 +334,7 @@ function validateCheckbox() {
    if (cuentaBancaria.checked || chTarjetaCredito.checked){
         if((chTarjetaCredito.checked && txtNumTarjeta.value 
             !== "" && txtCodSeguridadTarjeta.value  !== "" && txtVencimientoTarjeta.value !==  "") ||
-         (chTarjetaCredito.checked && txtNumBancaria.value !==   "") ){
+         (cuentaBancaria.checked && txtNumBancaria.value !==   "") ){
             
             btnMPago.classList.remove("is-invalid");
             btnMPago.classList.add("is-valid");
