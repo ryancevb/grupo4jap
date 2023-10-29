@@ -32,7 +32,7 @@ function getCartInfo() {
                 let count = document.createElement("input");
                 count.setAttribute("type", "number");
                 count.oninput = function () {
-                    if (this.value < 0) {
+                    if (this.value <= 0) {
                         this.value = 1;
                     }
                 }
@@ -49,9 +49,21 @@ function getCartInfo() {
                 cartName.appendChild(prodName);
                 mostrarTotales(data.articles);
 
+                let firstProduct = document.getElementById("firstProduct");
+                //Función para eliminar el 1er elemento producto 
+                buttonTrash.addEventListener("click", () => {
+                    cartBuyID.splice(0, 1);
+                    localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
+                    firstProduct.style.display = "none";
+
+                    updatesubtotal(elem.unitCost, parseInt(count.value), elem.currency);
+                    mostrarTotales();
+                });
+
             });
         })
 }
+
 
 
 document.getElementById("tipoEnvio").addEventListener("change", () => { mostrarTotales() })
@@ -92,7 +104,9 @@ function mostrarTotales() {
 
         costTotal = parseInt(stotal) + parseInt(costEnvio);
 
+
         cartBuySTotal.innerHTML = "USD " + stotal;
+        console.log(stotal)
         cartEnvioTotal.innerHTML = "USD " + costEnvio.toFixed(2);
         cartTotal.innerHTML = "USD " + costTotal.toFixed();
     }
@@ -112,6 +126,8 @@ function subtotal(cost, amount, currency) {
 
     } else {
         let subt = (cost * amount);
+        console.log(amount + "cantidad")
+        console.log(subt + "subt")
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
@@ -218,6 +234,8 @@ async function callJSON() {
                 cartBuyID.splice(i, 1);
                 localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
                 showCart.removeChild(row)
+                updatesubtotal(data.cost, parseInt(count.value), data.currency);
+                mostrarTotales()
             });
 
             //Se crea los elementos de adentro de los <td>
@@ -242,14 +260,38 @@ async function callJSON() {
     }
 
 }
-let firstProduct = document.getElementById("firstProduct");
-//Función para eliminar el 1er elemento producto 
-buttonTrash.addEventListener("click", () => {
-    cartBuyID.splice(0, 1);
-    localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
-    firstProduct.style.display = "none";
 
-});
+
+function updatesubtotal(cost, amount, currency) {
+    if (currency !== "USD") {
+        let subt = ((cost / 40) * (amount - 1));
+        while (cartSubt.firstChild) {
+            cartSubt.removeChild(cartSubt.firstChild);
+        }
+        cartSubt.appendChild(document.createTextNode(subt));
+        totalComprado += subt;
+
+    } else {
+        let subt = (cost * (amount - 1));
+        console.log(amount + "2cantidad")
+        console.log(subt + "2subt")
+        while (cartSubt.firstChild) {
+            cartSubt.removeChild(cartSubt.firstChild);
+        }
+        cartSubt.appendChild(document.createTextNode(subt));
+
+        totalComprado += subt;
+    }
+
+    mostrarTotales();
+}
+
+
+
+
+
+
+
 
 
 // Validación del formulario y el modal
@@ -281,10 +323,10 @@ document.getElementById("chTarjetaCredito").addEventListener("change", () => {
         document.getElementById("txtNumBancaria").disabled = true;
         document.getElementById("chBancaria").checked = false;
 
-           //Vaciar los inputs al seleccionar el otro checkbox
+        //Vaciar los inputs al seleccionar el otro checkbox
         document.getElementById("txtNumBancaria").value = "";
 
-        document.getElementById("payment").innerHTML= "Tarjeta de crédito";
+        document.getElementById("payment").innerHTML = "Tarjeta de crédito";
 
     }
 });
@@ -302,7 +344,7 @@ document.getElementById("chBancaria").addEventListener("change", () => {
         document.getElementById("txtCodSeguridadTarjeta").value = "";
         document.getElementById("txtVencimientoTarjeta").value = "";
 
-        document.getElementById("payment").innerHTML= "Cuenta Bancaria";
+        document.getElementById("payment").innerHTML = "Cuenta Bancaria";
     }
 });
 
@@ -329,13 +371,13 @@ let txtVencimientoTarjeta = document.getElementById("txtVencimientoTarjeta");
 let txtNumBancaria = document.getElementById("txtNumBancaria");
 
 function validateCheckbox() {
- 
 
-   if (cuentaBancaria.checked || chTarjetaCredito.checked){
-        if((chTarjetaCredito.checked && txtNumTarjeta.value 
-            !== "" && txtCodSeguridadTarjeta.value  !== "" && txtVencimientoTarjeta.value !==  "") ||
-         (cuentaBancaria.checked && txtNumBancaria.value !==   "") ){
-            
+
+    if (cuentaBancaria.checked || chTarjetaCredito.checked) {
+        if ((chTarjetaCredito.checked && txtNumTarjeta.value
+            !== "" && txtCodSeguridadTarjeta.value !== "" && txtVencimientoTarjeta.value !== "") ||
+            (cuentaBancaria.checked && txtNumBancaria.value !== "")) {
+
             btnMPago.classList.remove("is-invalid");
             btnMPago.classList.add("is-valid");
             btnMPago.style.color = `green`;
@@ -343,12 +385,11 @@ function validateCheckbox() {
             return true;
 
         }
-      }
-      
-        btnMPago.classList.remove("is-valid");
-        btnMPago.classList.add("is-invalid");
-        btnMPago.style.color = `red`;
-        btnMPago.setCustomValidity("Debe ingresar el Metodo de Pago");
     }
-   
-   
+
+    btnMPago.classList.remove("is-valid");
+    btnMPago.classList.add("is-invalid");
+    btnMPago.style.color = `red`;
+    btnMPago.setCustomValidity("Debe ingresar el Metodo de Pago");
+}
+
