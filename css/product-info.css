@@ -5,6 +5,7 @@ body {
     animation-duration: 4s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    font-family: 'Verdana', serif;
     
 }
 
@@ -13,7 +14,13 @@ body {
 
 #textCom2{
     text-align: center;
-    font-family: 'Verdana', serif;
+    width: 50%;
+    height: 60px;
+    margin: 2vw 25vw;
+     background-color:  rgb(31, 31, 31);
+     color: rgb(202, 198, 198);
+     box-shadow: 2px 2px 8px 4px white;
+     border-radius: 15px;
 }
 #infoProd {
     border: 1px solid black;
