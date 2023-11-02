@@ -25,3 +25,31 @@ function inputEmail() {
   inputEmail.setAttribute("value", userEmail)
  }
  inputEmail()
+
+//Foto de Perfil
+ document.addEventListener("DOMContentLoaded", function() {
+    const imageInput = document.getElementById("imageInput");
+    const imageContainer = document.getElementById("imageContainer");
+    const profileImage = document.getElementById("profileImage");
+    
+    imageInput.addEventListener("change", (event) => {
+        const selectedImage = event.target.files[0];
+        if (selectedImage) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const imageSrc = e.target.result;
+                profileImage.src = imageSrc;
+                localStorage.setItem("profileImage", imageSrc); 
+            };
+
+            reader.readAsDataURL(selectedImage);
+        }
+    });
+
+
+    const savedImageSrc = localStorage.getItem("profileImage");
+    if (savedImageSrc) {
+        profileImage.src = savedImageSrc;
+    }
+});

@@ -326,12 +326,6 @@ function updatesubtotal1(cost, amount, currency) {
     mostrarTotales();
 }
 
-
-
-
-
-
-
 // Validación del formulario y el modal
 (function () {
     'use strict'
