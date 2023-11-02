@@ -183,6 +183,7 @@ a.custom-card,
 a.custom-card:hover {
   color: inherit;
   text-decoration: inherit;
+
 }
 
 .checked {
@@ -193,15 +194,7 @@ a.custom-card:hover {
 .m-3, .card-text {
   text-align: center;
 }
-#botonMas{
-background-color: rgb(238, 238, 238);
-}
-#autos, #juguetes, #muebles{
-  background-color: rgb(238, 238, 238);
-}
-.links{
-  color: black;
-}
+
 .links:hover{
   text-decoration: none;
   color: black;
@@ -257,3 +250,4 @@ margin: 0 auto;
   
   border-radius: 10px;
 }
+
