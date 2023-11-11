@@ -12,6 +12,7 @@ const cartTotal = document.getElementById("tdTotal");
 const popup = document.getElementById("popupMetodo");
 const buttonTrash = document.querySelector(".trash");
 const modal = document.getElementById("modal-content");
+const typeEnvio = document.getElementById("tipoEnvio");
 var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
 
@@ -70,13 +71,13 @@ function getCartInfo() {
 
 
 
-document.getElementById("tipoEnvio").addEventListener("change", () => { mostrarTotales() })
+typeEnvio.addEventListener("change", () => { mostrarTotales() })
 function mostrarTotales() {
     let stotal;
     // let subt = document.getElementById("cartSubt").innerHTML;
     let subt = 0;
     let nsubt = 0;
-    tipoEnvio = document.getElementById("tipoEnvio").value;
+    tipoEnvio = typeEnvio.value;
     let cost = [];
 
 
@@ -243,10 +244,13 @@ async function callJSON() {
             }
             if (data.currency !== "USD"){
                  column5.appendChild(document.createTextNode(data.cost / 40));
+
             }else{
-                column5.appendChild(document.createTextNode(data.cost));
+               
+                  column5.appendChild(document.createTextNode(data.cost));
             }
-        
+
+
        
             count.addEventListener("input", () => {
                 subtotal(data.cost, parseInt(count.value), data.currency);
@@ -269,6 +273,7 @@ async function callJSON() {
                 // updatesubtotal(data.cost, parseInt(count.value), data.currency);
                 mostrarTotales()
             });
+
 
             //Se crea los elementos de adentro de los <td>
             column2.appendChild(prodName);
@@ -365,6 +370,19 @@ function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
 }
 
+// Tipo de envio es seleccionado aparece todo el formulario
+function showForm(){
+    let tipoEnvio = typeEnvio.value;
+    if( tipoEnvio !== ""){
+        
+        let elem = document.querySelectorAll(".hideAndShow");
+        for(let i = 0; i<elem.length; i++){
+            elem[i].style.display = `block`;
+        }
+    }
+}
+typeEnvio.addEventListener("change", () => { showForm()() })
+//showForm();
 //Validación de la tarjeta de crédito, adentro del modal, sí uno esta seleccionado el otro no se puede seleccionar
 document.getElementById("chTarjetaCredito").addEventListener("change", () => {
     if (document.getElementById("chTarjetaCredito").checked) {
@@ -404,8 +422,6 @@ document.getElementById("chBancaria").addEventListener("change", () => {
 
 // validando el formulario
 document.getElementById("buy-btn").addEventListener("click", function () {
-    var tipoEnvio = document.getElementById("tipoEnvio");
-
 
     if ( !cuentaBancaria.checked && !chTarjetaCredito.checked) {
         cuentaBancaria.setCustomValidity("Seleccione un método de pago");
@@ -431,7 +447,7 @@ let txtNumTarjeta = document.getElementById("txtNumTarjeta");
 let txtCodSeguridadTarjeta = document.getElementById("txtCodSeguridadTarjeta");
 let txtVencimientoTarjeta = document.getElementById("txtVencimientoTarjeta");
 let txtNumBancaria = document.getElementById("txtNumBancaria");
-
+let btnModal = document.getElementById("btnModal");
 // Validación de sí los checkbocks estan validados y así mostrar el botón verde como validado
 
 function validateCheckbox() {
@@ -454,5 +470,37 @@ function validateCheckbox() {
     btnMPago.style.color = `red`;
     btnMPago.setCustomValidity("Debe ingresar el Metodo de Pago");
 }
+/*
+lo dejo pero no me funciona 
+btnModal.addEventListener("click", ()=>{
+    let modal = document.getElementById("exampleModal");
+
+    if((!cuentaBancaria.checked || chTarjetaCredito.checked) && 
+    (cuentaBancaria.checked || !chTarjetaCredito.checked)){
+    
+        modal.style.opacity = "1";
+           modal.style.display = "block";
+        alert("Debe seleccionar un metodo de pago")
+    }else{
+         modal.style.opacity = "0";
+           modal.style.display = "none";}
+})
 
 
+btnModal.addEventListener("click", ()=>{
+    let modal = document.getElementById("exampleModal");
+
+    if((!cuentaBancaria.checked || chTarjetaCredito.checked) && 
+    (cuentaBancaria.checked || !chTarjetaCredito.checked)){
+    
+        modal.style.opacity = "1";
+           modal.style.display = "block";
+        alert("Debe seleccionar un metodo de pago")
+    }else{
+         modal.style.opacity = "0";
+         setTimeout(() => {
+            modal.style.display = "none";
+            modal.remove();
+         }, 500);
+    }
+})*/

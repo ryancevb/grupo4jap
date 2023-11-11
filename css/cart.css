@@ -64,3 +64,15 @@ form {
 .invalid-feedback{
     color: wheat;
 }
+
+
+/*Mostrar el formulario*/
+
+.hideAndShow{
+    display: none;
+}
+
+#buy-btn{
+    margin: auto;
+    width: 10%;
+    padding: 10px;}
