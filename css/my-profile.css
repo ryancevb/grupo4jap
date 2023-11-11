@@ -1,0 +1,46 @@
+.invalid-feedback, .valid-feedback{
+    color: white;
+  }
+  
+  #profileForm, .row{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  #savechanges{
+    width: 20vh;
+    height: 100%;
+    margin-left: 35vw;
+  }
+  
+  h2{
+    width: 30vh;
+    height: 100%;
+    margin: 5px 300px 30px;
+    padding: 10px 30px;
+    box-shadow: 2px 2px 8px 4px white;
+    border-radius: 15px;
+    background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198);
+    text-align: center;
+    margin-top: 10px;
+}
+.title{
+    display: flex;
+}
+#imageContainer {
+    margin-top: 10px;
+
+}
+
+#profileImage {
+    max-width: 10vh;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px 4px white;
+    border: 1px solid black;
+}
+
+#imageInput{
+    width: 110%;
+}

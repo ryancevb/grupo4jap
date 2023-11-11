@@ -76,3 +76,12 @@ form {
     margin: auto;
     width: 10%;
     padding: 10px;}
+.title{
+    margin: 5px 300px 30px;
+    padding: 10px 30px;
+    box-shadow: 2px 2px 8px 4px white;
+    border-radius: 15px;
+    background-color:  rgb(31, 31, 31);
+    color: rgb(202, 198, 198);
+    text-align: center;
+}

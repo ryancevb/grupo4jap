@@ -9,6 +9,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css\stylespages.css" rel="stylesheet">
+  <link href="css\my-profile.css" rel="stylesheet">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -62,9 +63,69 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div id="profileForm">
+        <div class="title">
+        <h2>Mi Perfil</h2>
+        <div id="imageContainer">
+          <img id="profileImage" src="" alt="Profile Picture">
       </div>
+      </div>
+      
+      
+      </div>
+      <hr>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-4 mb-3">
+            <label class="form-label">Primer nombre</label>
+            <input type="text" class="form-control" id="" aria-describedby="" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa tu primer nombre.</div>
+          </div>
+          <div class="col-4 mb-3 ">
+            <label class="form-label">Segundo nombre</label>
+            <input type="text" class="form-control" id="" aria-describedby="" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa tu segundo nombre.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 mb-3">
+            <label class="form-label">Primer apellido</label>
+            <input type="text" class="form-control" id="" aria-describedby="" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa tu primer apellido.</div>
+          </div>
+          <div class="col-4 mb-3">
+            <label class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control" id="" aria-describedby="" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa tu segundo apellido.</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4 mb-3">
+            <label for="exampleInputEmail1" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa tu correo electrónico.</div>
+          </div>
+          <div class="col-4 mb-3">
+            <label class="form-label">Teléfono de contacto*</label>
+            <input type="number" class="form-control" id="" aria-describedby="" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa tu télefono de contacto.</div>
+          </div>
+          <div class="col-4 mb-3">
+            <label class="form-label">Foto de Perfil</label>
+            <input type="file" class="form-control" id="imageInput" aria-describedby="" accept="image/*" required>
+            <div class="valid-feedback">Correcto!</div>
+            <div class="invalid-feedback">Por favor, ingresa una foto.</div>
+        </div>
+        </div>
+      <hr>
+        <button type="submit" class="btn btn-primary" id="savechanges">Guardar</button>
+      </form>
     </div>
   </main>
   <footer class="text-muted">
