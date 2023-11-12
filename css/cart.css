@@ -11,7 +11,18 @@
     border-radius: 14px;
     margin: 0 auto;
 }
-
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  
 
 .cartImg{
     width: 80px;
@@ -74,14 +85,15 @@ form {
 
 #buy-btn{
     margin: auto;
-    width: 10%;
+    width: 30%;
     padding: 10px;}
 .title{
-    margin: 5px 300px 30px;
+    margin: auto;
     padding: 10px 30px;
     box-shadow: 2px 2px 8px 4px white;
     border-radius: 15px;
     background-color:  rgb(31, 31, 31);
     color: rgb(202, 198, 198);
     text-align: center;
+    
 }

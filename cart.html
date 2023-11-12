@@ -40,10 +40,10 @@
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
               <li><a class="dropdown-item" href="cart.html">Carrito</a></li> 
-              <div class="form-check form-switch">
+              <li class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="night-mode-switch">
                 <label class="form-check-label" for="night-mode-switch">Modo Noche</label>
-              </div>
+              </li>
               <li><hr class="dropdown-divider"></li>
               <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
             </ul>
@@ -53,13 +53,14 @@
     </div>
   </nav>
   <main>
-    <div class="container">
+    <div class="container pb-5">
 
       <div id="container-cart">
-        <div class="title">
+        <div class="title text-center p-3">
         <h2>Carrito de compras</h2>
         <h4>Artículos a comprar</h4>
       </div>
+      <div style="overflow-x:auto;">
         <table id="table-cart">
           <tr>
             <th></th>
@@ -79,6 +80,7 @@
           </tr>
         </table>
 
+      </div>
 
         
         <!-- Controles para Envio-->

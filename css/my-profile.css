@@ -2,11 +2,11 @@
     color: white;
   }
   
-  #profileForm, .row{
+  /*#profileForm, .row{
     align-items: center;
     justify-content: center;
     text-align: center;
-  }
+  }*/
   
   #savechanges{
     width: 20vh;
@@ -17,7 +17,7 @@
   h2{
     width: 30vh;
     height: 100%;
-    margin: 5px 300px 30px;
+    margin: 5px 10px 30px;
     padding: 10px 30px;
     box-shadow: 2px 2px 8px 4px white;
     border-radius: 15px;
@@ -27,7 +27,10 @@
     margin-top: 10px;
 }
 .title{
-    display: flex;
+   
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 #imageContainer {
     margin-top: 10px;
