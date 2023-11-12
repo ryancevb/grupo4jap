@@ -7,16 +7,16 @@
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
-          if (!form.checkValidity() ) {
+          if (!form.checkValidity()) {
             event.preventDefault()
             event.stopPropagation()
-           
+            
           }
           form.classList.add('was-validated')
                 if(form.checkValidity()){
-                  setLocalStorage(event)
                     alert("Perfil actualizado!!");
                 }
+                setLocalStorage(event)
             }, false)
       })
   })()
@@ -69,12 +69,12 @@ function setLocalStorage(event){
   localStorage.setItem("firstName", name); 
   localStorage.setItem("secondName", nametwo); 
   localStorage.setItem("firstLastName", lastname); 
-  localStorage.setItem("secondLastName", lastnametwo); 
   localStorage.setItem("phone", tell); 
+  localStorage.setItem("secondLastName", lastnametwo);
+  
 
   
 }
-
 
 function getValuesFromLocalStorage(){
 
@@ -110,3 +110,4 @@ function getValuesFromLocalStorage(){
 
 }
 getValuesFromLocalStorage();
+
