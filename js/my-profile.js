@@ -7,12 +7,14 @@
     Array.prototype.slice.call(forms)
       .forEach(function (form) {
         form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
+          if (!form.checkValidity() ) {
             event.preventDefault()
             event.stopPropagation()
+           
           }
           form.classList.add('was-validated')
                 if(form.checkValidity()){
+                  setLocalStorage(event)
                     alert("Perfil actualizado!!");
                 }
             }, false)
@@ -55,7 +57,7 @@ const firstLastName = document.getElementById("firstLastName");
 const secondLastName= document.getElementById("secondLastName");
 const phone = document.getElementById("phone"); 
  
-document.getElementById("savechanges").addEventListener("click", (event) =>{
+function setLocalStorage(event){
   event.preventDefault();
   let name = firstName.value;
   let nametwo = secondName.value;
@@ -71,7 +73,8 @@ document.getElementById("savechanges").addEventListener("click", (event) =>{
   localStorage.setItem("phone", tell); 
 
   
-});
+}
+
 
 function getValuesFromLocalStorage(){
 
