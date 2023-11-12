@@ -74,7 +74,8 @@ document.getElementById("savechanges").addEventListener("click", (event) =>{
 });
 
 function getValuesFromLocalStorage(){
-  let userEmail= localStorage.getItem("correo");
+
+ 
 
   let name= localStorage.getItem("firstName");
   let nametwo= localStorage.getItem("secondName");
@@ -82,16 +83,27 @@ function getValuesFromLocalStorage(){
   let lastnametwo= localStorage.getItem("secondLastName");
   let tell= localStorage.getItem("phone");
 
+  if(name  == null  ||
+    nametwo  == null ||
+    lastname  == null ||
+    lastnametwo == null ||
+   tell  == null ){
+    firstName.innerHTML == ""
+    secondName.innerHTML == ""
+    firstLastName.innerHTML == ""
+    secondLastName.innerHTML == ""
+    phone.innerHTML == ""
+    }else {
+      firstName.setAttribute("value", name)
+      secondName.setAttribute("value", nametwo);
+      firstLastName.setAttribute("value", lastname);
+      secondLastName.setAttribute("value", lastnametwo);
+      phone.setAttribute("value", tell);
 
-
-
-  let inputEmail = document.getElementById("exampleInputEmail1");
-  firstName.setAttribute("value", name)
-  secondName.setAttribute("value", nametwo);
-  firstLastName.setAttribute("value", lastname);
-  secondLastName.setAttribute("value", lastnametwo);
-  phone.setAttribute("value", tell);
-  inputEmail.setAttribute("value", userEmail);
+    }
+    let userEmail= localStorage.getItem("correo");
+    let inputEmail = document.getElementById("exampleInputEmail1");
+    inputEmail.setAttribute("value", userEmail);
 
 }
 getValuesFromLocalStorage();
