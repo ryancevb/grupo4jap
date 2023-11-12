@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+
   }
   
   #savechanges{
@@ -42,7 +43,7 @@
 }
 
 #imageInput{
-    width: 110%;
+    width: 100%;
 }
 #imgprofile{
 margin-left: 15vw;
