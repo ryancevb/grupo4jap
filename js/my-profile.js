@@ -56,19 +56,17 @@ const secondName = document.getElementById("secondName");
 const firstLastName = document.getElementById("firstLastName");
 const secondLastName= document.getElementById("secondLastName");
 const phone = document.getElementById("phone"); 
-
+ 
 function setLocalStorage(event){
   event.preventDefault();
-  
-  
   let name = firstName.value;
   let nametwo = secondName.value;
   let lastname = firstLastName.value;
    let lastnametwo = secondLastName.value;
   let tell = phone.value;
-  
+  console.log(name)
   if((name != "" && 
-   lastname != "" &&   tell != ""  ) || (lastnametwo != "" || nametwo != "")  ){
+   lastname != "" &&   tell != "" )|| (lastnametwo != "" || nametwo != "")  ){
       localStorage.setItem("firstName", name); 
   localStorage.setItem("secondName", nametwo); 
   localStorage.setItem("firstLastName", lastname); 
