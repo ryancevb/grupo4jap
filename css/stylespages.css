@@ -1,6 +1,8 @@
 body {
   background-color: orangered;
   background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6), rgba(215, 78, 54, 0.9));
+  /*background-color: (238, 238, 238);*/
+  /*background-color: rgb(231, 230, 230);*/
   animation-duration: 4s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
@@ -20,6 +22,7 @@ body {
   background-color:  rgb(31, 31, 31);
   color: rgb(202, 198, 198)
 }
+
 
 .form-control,
 .btn-group {
