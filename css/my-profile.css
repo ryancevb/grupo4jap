@@ -1,8 +1,17 @@
+body {
+  background-color: orangered;
+  background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6), rgba(215, 78, 54, 0.9));
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  font-family: 'Verdana', serif;
+  
+}
 .invalid-feedback, .valid-feedback{
     color: white;
   }
   
-  /*#profileForm, .row{
+  #profileForm, .row{
     align-items: center;
     justify-content: center;
     text-align: center;
