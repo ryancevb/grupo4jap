@@ -43,3 +43,7 @@ body {
 .textNight{
     color: black;
 }
+
+#tablaDePrecios, #table-cart{
+    color: black;
+}
