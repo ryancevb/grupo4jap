@@ -1,3 +1,4 @@
+
 const URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const showCart = document.getElementById("table-cart");
 const cartImg = document.getElementById("cartImg");
@@ -13,7 +14,6 @@ const popup = document.getElementById("popupMetodo");
 const buttonTrash = document.querySelector(".trash");
 const modal = document.getElementById("modal-content");
 const typeEnvio = document.getElementById("tipoEnvio");
-var userID = undefined; // para próx entregas agregar en el fetch
 var userCart = [];
 
 
@@ -25,7 +25,6 @@ function getCartInfo() {
         .then(response => response.json())
         .then(data => {
             userCart = data
-            console.log(userCart);
             userCart.articles.forEach(elem => {
                 let dataImg = document.createElement("img");
                 dataImg.setAttribute("class", "cartImg");
@@ -57,7 +56,7 @@ function getCartInfo() {
                 let firstProduct = document.getElementById("firstProduct");
                 //Función para eliminar el 1er elemento producto 
                 buttonTrash.addEventListener("click", () => {
-                    cartBuyID.splice(0, 1);
+                    userCart.articles.splice(0, 1);
                     localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
                     firstProduct.style.display = "none";
                     elem.unitCost = "0";
@@ -74,7 +73,6 @@ function getCartInfo() {
 typeEnvio.addEventListener("change", () => { mostrarTotales() })
 function mostrarTotales() {
     let stotal;
-    // let subt = document.getElementById("cartSubt").innerHTML;
     let subt = 0;
     let nsubt = 0;
     tipoEnvio = typeEnvio.value;
@@ -87,28 +85,21 @@ function mostrarTotales() {
             subt = Number(subt);
             let elements = document.querySelectorAll('[id^="subtNewProd"]');
             elements.forEach((elem) => {
-                // nsubt = Number(element.innerHTML);
-                // stotal = Number(subt) + Number(nsubt);
                 let eachProd = Number(elem.innerHTML)
                 cost.push(eachProd);
                 nsubt = cost.reduce((a, b) => a + b, 0);
                 stotal = Number(subt) + Number(nsubt);
-                console.log(typeof(nsubt));
-
-
-            });
+           });
 
         } else {
             subt = document.getElementById("cartSubt").innerHTML;
             subt = Number(subt);
             let elements = document.querySelectorAll('[id^="subtNewProd"]');
             elements.forEach((elem) => {
-                // nsubt = nsubt +  parseInt(elem.innerHTML);
                 let eachProd = parseInt(elem.innerHTML)
                 if (isNaN(eachProd)){cost.push(0)}
                 else{cost.push(eachProd);
                 nsubt = cost.reduce((a, b) => a + b, 0);}
-                console.log(typeof(subt), subt, cost);
             });
             stotal = parseInt(subt) + parseInt(nsubt);
         }
@@ -132,9 +123,8 @@ function mostrarTotales() {
         }
         cartBuySTotal.innerHTML = "USD " + stotal;
 
-        cartEnvioTotal.innerHTML = "USD " + costEnvio.toFixed(2);
-        cartTotal.innerHTML = "USD " + costTotal.toFixed(1);
-        console.log(typeof(stotal));
+        cartEnvioTotal.innerHTML = "USD " + Math.round(costEnvio);
+        cartTotal.innerHTML = "USD " + Math.round(costTotal);
     }
 
 }
@@ -147,18 +137,16 @@ function subtotal(cost, amount, currency) {
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
-        cartSubt.appendChild(document.createTextNode(subt));
-        totalComprado += subt;
+        cartSubt.appendChild(document.createTextNode(subt));////////////////////////////////
+        totalComprado += Math.round(subt);
 
     } else {
         let subt = (cost * amount);
-        console.log(amount + "cantidad")
-        console.log(subt + "subt")
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
         cartSubt.appendChild(document.createTextNode(parseInt(subt)));
-        console.log(typeof(subt), subt);
+
 
         totalComprado += parseInt(subt);
     }
@@ -215,6 +203,7 @@ async function callJSON() {
                     while (subtNewProd.firstChild) {
                         subtNewProd.removeChild(subtNewProd.firstChild);
                     }
+                    subt = Math.round(subt)
                     subtNewProd.appendChild(document.createTextNode(subt));
                 } else {
                     let subt = cost;
@@ -270,7 +259,6 @@ async function callJSON() {
                 cartBuyID.splice(i, 1);
                 localStorage.setItem('catBuyID', JSON.stringify(cartBuyID));
                 showCart.removeChild(row)
-                // updatesubtotal(data.cost, parseInt(count.value), data.currency);
                 mostrarTotales()
             });
 
@@ -303,22 +291,22 @@ async function callJSON() {
 function updatesubtotal(cost, amount, currency) {
     if (currency !== "USD") {
         let upSubt = ((cost / 40) * (amount=1));
-        console.log(amount, upSubt);
+
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
         cartSubt.appendChild(document.createTextNode(upSubt));
         totalComprado += upSubt;
-        console.log(amount, upSubt);
+        console.log(amount, upSubt.toFixed(1));
 
     } else {
         let upSubt = (cost * (amount=1));
-        console.log(amount, upSubt);
+
         while (cartSubt.firstChild) {
             cartSubt.removeChild(cartSubt.firstChild);
         }
         cartSubt.appendChild(document.createTextNode(upSubt));
-        console.log(amount, upSubt);
+
         totalComprado += upSubt;
     }
 
@@ -336,7 +324,12 @@ function updatesubtotal(cost, amount, currency) {
     Array.from(forms)
         .forEach(function (form) {
             form.addEventListener('submit',  function (event) {
-                if (!form.checkValidity()  ) {
+                if (cartTotal.innerHTML === "USD 0"){
+                    event.preventDefault()
+                    event.stopPropagation()
+                    showAlertCartError()
+                } else {
+                if (!form.checkValidity()) {
                     event.preventDefault()
                     event.stopPropagation()
                     showAlertError()
@@ -348,7 +341,7 @@ function updatesubtotal(cost, amount, currency) {
                 if(form.checkValidity(event)){
                     event.preventDefault();
                     showAlertSuccess();
-                }
+                }}
                
                
             }, false)
@@ -358,10 +351,23 @@ function updatesubtotal(cost, amount, currency) {
 //Alertas
 function showAlertSuccess() {
     document.getElementById("alert-success").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("alert-success").classList.remove("show");
+    }, 4000);
 }
 
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("alert-danger").classList.remove("show");
+    }, 4000);
+}
+
+function showAlertCartError(){
+    document.getElementById("alert-cart-err").classList.add("show");
+    setTimeout(() => {
+        document.getElementById("alert-cart-err").classList.remove("show");
+    }, 4000);
 }
 
 // Tipo de envio es seleccionado aparece todo el formulario
@@ -375,8 +381,8 @@ function showForm(){
         }
     }
 }
-typeEnvio.addEventListener("change", () => { showForm()() })
-//showForm();
+typeEnvio.addEventListener("change", () => { showForm() })
+
 //Validación de la tarjeta de crédito, adentro del modal, sí uno esta seleccionado el otro no se puede seleccionar
 document.getElementById("chTarjetaCredito").addEventListener("change", () => {
     if (document.getElementById("chTarjetaCredito").checked) {
@@ -428,7 +434,7 @@ document.getElementById("buy-btn").addEventListener("click", function () {
     }
     //Se valida sí estan los checkbox validados
     validateCheckbox()
-
+console.log( typeof(cartTotal.innerHTML) );
 });
 
 
@@ -442,8 +448,8 @@ let txtCodSeguridadTarjeta = document.getElementById("txtCodSeguridadTarjeta");
 let txtVencimientoTarjeta = document.getElementById("txtVencimientoTarjeta");
 let txtNumBancaria = document.getElementById("txtNumBancaria");
 let btnModal = document.getElementById("btnModal");
-// Validación de sí los checkbocks estan validados y así mostrar el botón verde como validado
 
+// Validación de sí los checkbocks estan validados y así mostrar el botón verde como validado
 function validateCheckbox() {
     if (cuentaBancaria.checked || chTarjetaCredito.checked) {
         if ((chTarjetaCredito.checked && txtNumTarjeta.value
@@ -464,37 +470,3 @@ function validateCheckbox() {
     btnMPago.style.color = `red`;
     btnMPago.setCustomValidity("Debe ingresar el Metodo de Pago");
 }
-/*
-lo dejo pero no me funciona 
-btnModal.addEventListener("click", ()=>{
-    let modal = document.getElementById("exampleModal");
-
-    if((!cuentaBancaria.checked || chTarjetaCredito.checked) && 
-    (cuentaBancaria.checked || !chTarjetaCredito.checked)){
-    
-        modal.style.opacity = "1";
-           modal.style.display = "block";
-        alert("Debe seleccionar un metodo de pago")
-    }else{
-         modal.style.opacity = "0";
-           modal.style.display = "none";}
-})
-
-
-btnModal.addEventListener("click", ()=>{
-    let modal = document.getElementById("exampleModal");
-
-    if((!cuentaBancaria.checked || chTarjetaCredito.checked) && 
-    (cuentaBancaria.checked || !chTarjetaCredito.checked)){
-    
-        modal.style.opacity = "1";
-           modal.style.display = "block";
-        alert("Debe seleccionar un metodo de pago")
-    }else{
-         modal.style.opacity = "0";
-         setTimeout(() => {
-            modal.style.display = "none";
-            modal.remove();
-         }, 500);
-    }
-})*/
