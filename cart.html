@@ -12,6 +12,7 @@
   <link href="css\stylespages.css" rel="stylesheet">
   <link rel="stylesheet" href="css/cart.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="css/night-mode.css" rel="stylesheet" id="night-mode-stylesheet" disabled>
 
 </head>
 
@@ -38,11 +39,12 @@
               aria-expanded="false"></button>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-              <li><a class="dropdown-item" href="cart.html">Carrito</a></li>
-              <li><a id="darkmode" class="dropdown-item">Modo Oscuro</a></li>
-              <li>
-                <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="cart.html">Carrito</a></li> 
+              <li class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="night-mode-switch">
+                <label class="form-check-label" for="night-mode-switch">Modo Noche</label>
               </li>
+              <li><hr class="dropdown-divider"></li>
               <li><a id="logout" class="dropdown-item" href="login.html">Cerrar Sesión</a></li>
             </ul>
           </li>
@@ -51,14 +53,14 @@
     </div>
   </nav>
   <main>
-    <div class="album py-5 bg-light">
-    <div class="container">
+    <div class="container pb-5">
 
       <div id="container-cart">
-        <div class="title">
+        <div class="title text-center p-3">
         <h2>Carrito de compras</h2>
         <h4>Artículos a comprar</h4>
       </div>
+      <div style="overflow-x:auto;">
         <table id="table-cart">
           <tr>
             <th></th>
@@ -78,25 +80,31 @@
           </tr>
         </table>
 
+      </div>
 
-
+        
         <!-- Controles para Envio-->
         <div id="controlesEnvio">
           <form class="needs-validation" novalidate>
             <div class="form-row">
               <div class="form-group col-md-6">
-                <h2>Tipo de Envío</h2>
+                <h2>Selecciona el tipo de envío</h2>
                 <div>
-                  <select id="tipoEnvio" class="form-control" required>
-                    <option value="disabled" selected disabled>Selecciona el tipo de envío:</option>
+                  <select id="tipoEnvio"  class="form-select" required>
+                    <option selected disabled value="disabled" ></option>
                     <option value="estandar">Estándar 12 a 15 dias (5%)</option>
                     <option value="express">Express 5 a 8 dias (7%)</option>
                     <option value="sameDay">Premium 2 a 5 dias (15%)</option>
                   </select>
+                
                   <div class="invalid-feedback">Seleccione un tipo de envío válido.</div>
                 </div>
               </div>
-              <div class="form-group col-md-6">
+              <div>
+
+                
+             
+              <div class="form-group col-md-6 hideAndShow" >
                 <h2>Dirección de Entrega</h2>
                 <div id="calle">
                   <label for="calle">Calle:</label>
@@ -106,7 +114,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group col-md-6 ">
+            <div class="form-group col-md-6 hideAndShow" >
               <div id="numero">
                 <label for="numero">Número:</label>
                 <input type="number" id="numero" class="form-control" required><br>
@@ -114,7 +122,7 @@
                 <div class="invalid-feedback">Por favor, ingrese su Número.</div>
               </div>
             </div>
-            <div class="form-group col-md-6 ">
+            <div class="form-group col-md-6 hideAndShow" >
               <div id="esquina">
                 <label for="esquina">Esquina:</label>
                 <input type="text" id="esquina" class="form-control" required>
@@ -122,9 +130,9 @@
                 <div class="invalid-feedback">Por favor, ingrese su Esquina.</div>
               </div>
 
-              <div class="form-group col-md-6 ">
-                <h2>Costos</h2>
-                <table id="tablaDePrecios" class="default">
+              <div class="form-group col-md-6  hideAndShow" >
+                <h2 >Costos</h2>
+                <table id="tablaDePrecios" class="default" class="hideAndShow">
                   <tr>
                     <td>Subtotal</td>
                     <td id="tdSubtotal">USD 0</td>
@@ -134,14 +142,14 @@
                     <td id="tdCostoEnvio">USD 0</td>
                   </tr>
                   <tr>
-                    <td>Total($)</td>
-                    <td id="tdTotal"><b>USD 0</b></td>
+                    <td>Total(USD)</td>
+                    <td id="tdTotal"><b> 0 </b></td>
                   </tr>
                 </table>
               </div>
             </div>
             <br>
-            <div id="modal">
+            <div id="modal" class="hideAndShow">
               <!-- Boton modal -->
               
               <button type="button" id="btnMPago" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -162,14 +170,14 @@
                     </div>
                     <div class="modal-body">
                       <div id="chtarjeta">
-                        <label for="">Tarjeta de crédito</label>
+                        <label for="" class="textNight">Tarjeta de crédito</label>
                         <input type="radio" name="" id="chTarjetaCredito" required>
                       </div>
 
                       <hr>
                       <div class="modal-body">
                         <div id="num-tarjeta">
-                          <label for="">Número de tarjeta</label>
+                          <label for="" class="textNight">Número de tarjeta</label>
                           <input type="text" class="form-control" id="txtNumTarjeta" disabled required>
                           <div class="valid-feedback">Correcto!</div>
                           <div class="invalid-feedback">Por favor, introduce un número de tarjeta válido.</div>
@@ -178,7 +186,7 @@
 
                       <div class="modal-body">
                         <div id="cod-tarjeta">
-                          <label for="">Código de seg.</label>
+                          <label for="" class="textNight">Código de seg.</label>
                           <input type="password" class="form-control" id="txtCodSeguridadTarjeta" disabled required>
                           <div class="valid-feedback">Correcto!</div>
                           <div class="invalid-feedback">Introduce correctamente el código de seguridad de la tarjeta.
@@ -186,34 +194,35 @@
                         </div>
                       </div>
 
-                      <div class="modal-body">
-                        <div id="ven-tarjeta">
-                          <label for="">Vencimiento (DD/MM/AA)</label>
+                      <div class="modal-body" >
+                        <div id="ven-tarjeta" class="textNight" >
+                          <label for=""  class="textNight" >Vencimiento (DD/MM/AA)</label>
                           <input type="date" class="form-control" id="txtVencimientoTarjeta" disabled required>
-                          <div class="valid-feedback">Correcto!</div>
+                          <div class="valid-feedback" class="textNight">Correcto!</div>
                           <div class="invalid-feedback">Ingrese el vencimiento de la tarjeta.</div>
                         </div>
                       </div>
                       <hr>
-                      <div class="modal-body">
-                        <div id="chcuentaBancaria">
-                          <label for="">Cuenta Bancaria</label>
+                      <div class="modal-body"  >
+                        <div id="chcuentaBancaria" >
+                          <label for="" class="textNight">Cuenta Bancaria</label>
                           <input type="radio" name="" id="chBancaria"  required>
                         </div>
                       </div>
                       <hr>
                       <div class="modal-body">
                         <div id="num-cuenta">
-                          <label for="">Número de cuenta</label>
+                          <label for=""  class="textNight">Número de cuenta</label>
                           <input type="text" class="form-control" id="txtNumBancaria"  disabled required>
-                          <div class="valid-feedback">Correcto!</div>
-                          <div class="invalid-feedback">Ingrese número de la cuenta bancaria.</div>
+                          <div class="valid-feedback" class="textNight">Correcto!</div>
+                          <div class="invalid-feedback" class="textNight">Ingrese número de la cuenta bancaria.</div>
                         </div>
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    </div>
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelChanges">Cerrar</button>
+                      <!--<button type="button" class="btn btn-primary" id="btnModal" >Guardar</button>-->
+                  </div>
                     
                   </div>
                 </div>
@@ -221,17 +230,20 @@
             </div>
         </div>
         <br>
-        <button type="submit" class="btn btn-primary" id="buy-btn">Comprar</button>
+        <div id="buttonSub">
+          <button type="submit" class="hideAndShow btn btn-primary " id="buy-btn">Comprar</button>
+
+        </div>
+        
       </form>
-    
+    </div>
       </div>
 
 
 
     </div>
+  
 
-
-    </div>
     </div>
   </div>
   </main>

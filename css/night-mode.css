@@ -1,11 +1,11 @@
-body {
+body, #nightIndex{
     color: black;
     background: linear-gradient(45deg, rgb(0, 0, 0), rgb(22, 18, 17), rgb(27, 21, 17), rgba(34, 25, 24, 0.9));
     font-family: 'Verdana', serif !important;
 }
 
 
-.jumbotron {
+.jumbotron, footer {
     background-color: #222; 
     color: white;
 }
@@ -16,8 +16,8 @@ body {
 }
 
 .container,
-.site-header {
-    background-color: #111; 
+.site-header, .links {
+  
     color: white;
 }
 
@@ -36,4 +36,14 @@ body {
 }
 #textCom{
     color: white;
+}
+
+/*Modal CART*/
+
+.textNight{
+    color: black;
+}
+
+#tablaDePrecios, #table-cart{
+    color: black;
 }

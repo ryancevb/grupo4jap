@@ -185,6 +185,7 @@ a.custom-card,
 a.custom-card:hover {
   color: inherit;
   text-decoration: inherit;
+
 }
 
 .checked {
@@ -260,3 +261,4 @@ margin: 0 auto;
   
   border-radius: 10px;
 }
+

@@ -1,0 +1,17 @@
+body, .album{
+    background-color: orangered;
+    background: linear-gradient(45deg, red, orangered, rgb(235, 109, 6),   rgba(215, 78, 54, 0.9)); ;
+}
+
+.card, #botonMas{
+    background-color:  rgb(31, 31, 31);
+color: rgb(202, 198, 198);
+border: 1px solid white;
+
+}
+
+a.custom-card,
+a.custom-card:hover {
+    box-shadow: 2px 2px 8px 4px white;
+  
+}
