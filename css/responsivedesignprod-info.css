@@ -16,10 +16,17 @@
     width: 40%;
    }
    #btnCart {
-    margin-top: 5vh;
+    margin-top: 2vh;
+    margin-right: 0;
+   }
+   h1{
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
    }
     }
-
 @media only screen and (min-width: 960px) {
     #textCom{
         margin-top: 55vh;
@@ -36,5 +43,10 @@
     }
     h1{
         margin-bottom: 20px;
+        font-size: 30px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        
     }
 }
